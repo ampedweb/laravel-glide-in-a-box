@@ -2,6 +2,7 @@
 
 namespace AmpedWeb\GlideInABox\Providers;
 
+use AmpedWeb\GlideInABox\Util\GlideUrl;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Route;
@@ -46,10 +47,21 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
     protected function routeConfiguration()
     {
-        return [
-            'prefix'     => config('glideinabox.route_prefix'),
-            'middleware' => config('glideinabox.route_middleware'),
-        ];
+
+        $routeGroupConfig = [];
+
+        $routePrefix = config('glideinabox.route_prefix', null);
+        $routeMiddleware = config('glideinabox.route_middleware', null);
+
+        if ($routePrefix !== null && strlen($routePrefix)) {
+            $routeGroupConfig['prefix'] = $routePrefix;
+        }
+        if ($routeMiddleware !== null && strlen($routeMiddleware)) {
+            $routeGroupConfig['middleware'] = $routeMiddleware;
+        }
+
+        return $routeGroupConfig;
+
     }
 
     /**
@@ -59,7 +71,17 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function register()
     {
-        //
+
+        /**
+         * Bind the GlideUrl utility class
+         */
+        $this->app->bind(
+            GlideUrl::class,
+            function ($app) {
+                return new GlideUrl();
+            }
+        );
+
         $this->app->singleton(
             Server::class,
             function ($app) {
@@ -70,14 +92,19 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
                 return ServerFactory::create(
                     [
-                        'response'          => $app->makeWith(
+                        'response'               => $app->makeWith(
                             LaravelResponseFactory::class,
                             ['request' => app('request')]
                         ),
-                        'source'            => $app->make(LeagueFilesSystem::class),
-                        'cache'             => $app->make(Filesystem::class)->getDriver(),
-                        'cache_path_prefix' => config('glideinabox.cache_path_prefix'),
-                        'base_url'          => config('glideinabox.base_url'),
+                        'source'                 => $app->make(LeagueFilesSystem::class),
+                        'cache'                  => $app->make(Filesystem::class)->getDriver(),
+                        'cache_path_prefix'      => config('glideinabox.cache_path_prefix', '.cache'),
+                        'base_url'               => config('glideinabox.base_url', 'img'),
+                        'defaults'               => config('glideinabox.defaults', []),
+                        'presets'                => config('glideinabox.presets', []),
+                        'driver'                 => config('glideinabox.driver', 'gd'),
+                        'group_cache_in_folders' => config('glideinabox.group_cache_in_folders', true),
+                        'max_image_size'         => config('glideinabox.max_image_size', null)
                     ]
                 );
             }

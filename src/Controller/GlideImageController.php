@@ -26,12 +26,8 @@ class GlideImageController extends Controller
         $this->signatureValidation = $signatureValidation;
     }
 
-    public function preset()
-    {
 
-    }
-
-    public function custom($path)
+    public function image($path)
     {
         //If we don't pass validation this will "abort"
         $this->signatureValidation->validate($path);
