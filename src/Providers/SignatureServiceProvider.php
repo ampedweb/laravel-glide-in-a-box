@@ -16,7 +16,7 @@ class SignatureServiceProvider extends ServiceProvider implements DeferrableProv
     public function register()
     {
         $this->app->singleton(Signature::class,function ($app) {
-            return new Signature(config('app.glide_image_signature_key'));
+            return new Signature(config('glideinabox.signature_key'));
         });
     }
 

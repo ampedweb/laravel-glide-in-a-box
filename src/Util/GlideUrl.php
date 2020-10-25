@@ -22,15 +22,13 @@ class GlideUrl
      */
     protected $urlFactory;
 
+
     /**
      * GlideUrl constructor.
      */
     public function __construct()
     {
-        $this->urlFactory = UrlBuilderFactory::create(
-            '/' . config('glideinabox.base_url') . '/',
-            config('glideinabox.signature_key')
-        );
+        $this->urlFactory = UrlBuilderFactory::create('/' . config('glideinabox.base_url') . '/', config('glideinabox.signature_key'));
     }
 
 
@@ -53,6 +51,7 @@ class GlideUrl
         if (Str::startsWith($this->path, '/storage/')) {
             $this->path = Str::replaceFirst('/storage/', '', $this->path);
         }
+
         return Str::of($this->path)->replace('\\', '/');
     }
 
@@ -92,6 +91,7 @@ class GlideUrl
      */
     public function custom(array $params = [])
     {
+
         return url($this->urlFactory->getUrl($this->parsedPath(), $params));
     }
 

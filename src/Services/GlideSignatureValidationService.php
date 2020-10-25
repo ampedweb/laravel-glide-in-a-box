@@ -29,7 +29,7 @@ class GlideSignatureValidationService implements SignatureValidationServiceInter
     public function __construct(Signature $signature, string $baseImgDir = null)
     {
         $this->signature = $signature;
-        $this->baseImgDir = $baseImgDir;
+        $this->baseImgDir = $baseImgDir ?? config('glideinabox.base_url');
     }
 
 
@@ -41,6 +41,7 @@ class GlideSignatureValidationService implements SignatureValidationServiceInter
      */
     public function validate($path, Closure $callback = null)
     {
+
         try {
             // Validate HTTP signature
             $this->signature->validateRequest('/' . $this->baseImgDir . '/' . $path, request()->all());
