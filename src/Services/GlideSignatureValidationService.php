@@ -33,6 +33,7 @@ class GlideSignatureValidationService implements SignatureValidationServiceInter
     }
 
 
+
     /**
      * @param               $path
      * @param Closure|null $callback
@@ -44,7 +45,7 @@ class GlideSignatureValidationService implements SignatureValidationServiceInter
 
         try {
             // Validate HTTP signature
-            $this->signature->validateRequest('/' . $this->baseImgDir . '/' . $path, request()->all());
+            $this->signature->validateRequest('/' . $this->baseImgDir . '/'.$path, request()->all());
 
         } catch (SignatureException $e) {
 

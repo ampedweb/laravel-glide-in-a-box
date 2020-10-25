@@ -23,8 +23,6 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function boot()
     {
-
-        $this->registerRoutes();
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 [
@@ -33,35 +31,6 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
                 'config'
             );
         }
-    }
-
-    protected function registerRoutes()
-    {
-        Route::group(
-            $this->routeConfiguration(),
-            function () {
-                $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-            }
-        );
-    }
-
-    protected function routeConfiguration()
-    {
-
-        $routeGroupConfig = [];
-
-        $routePrefix = config('glideinabox.route_prefix', null);
-        $routeMiddleware = config('glideinabox.route_middleware', null);
-
-        if ($routePrefix !== null && strlen($routePrefix)) {
-            $routeGroupConfig['prefix'] = $routePrefix;
-        }
-        if ($routeMiddleware !== null && strlen($routeMiddleware)) {
-            $routeGroupConfig['middleware'] = $routeMiddleware;
-        }
-
-        return $routeGroupConfig;
-
     }
 
     /**
@@ -86,27 +55,37 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
             Server::class,
             function ($app) {
 
-                $leagueFileSystem = new LeagueFilesSystem(new Local(public_path('storage')));
 
-                $this->app->instance(LeagueFilesSystem::class, $leagueFileSystem);
+                $sourceFileSystemPath = config('glideinabox.source', public_path('storage'));
+                $sourceFileSystem = new LeagueFilesSystem(new Local($sourceFileSystemPath));
 
-                return ServerFactory::create(
-                    [
-                        'response'               => $app->makeWith(
-                            LaravelResponseFactory::class,
-                            ['request' => app('request')]
-                        ),
-                        'source'                 => $app->make(LeagueFilesSystem::class),
-                        'cache'                  => $app->make(Filesystem::class)->getDriver(),
-                        'cache_path_prefix'      => config('glideinabox.cache_path_prefix', '.cache'),
-                        'base_url'               => config('glideinabox.base_url', 'img'),
-                        'defaults'               => config('glideinabox.defaults', []),
-                        'presets'                => config('glideinabox.presets', []),
-                        'driver'                 => config('glideinabox.driver', 'gd'),
-                        'group_cache_in_folders' => config('glideinabox.group_cache_in_folders', true),
-                        'max_image_size'         => config('glideinabox.max_image_size', null)
-                    ]
-                );
+
+                $serverConfig = [
+                    'response'               => $app->makeWith(
+                        LaravelResponseFactory::class,
+                        ['request' => app('request')]
+                    ),
+                    'source'                 => $sourceFileSystem,
+                    'cache'                  => $app->make(Filesystem::class)->getDriver(),
+                    'cache_path_prefix'      => config('glideinabox.cache_path_prefix', '.cache'),
+                    'base_url'               => config('glideinabox.base_url', 'img'),
+                    'defaults'               => config('glideinabox.defaults', []),
+                    'presets'                => config('glideinabox.presets', []),
+                    'driver'                 => config('glideinabox.driver', 'gd'),
+                    'group_cache_in_folders' => config('glideinabox.group_cache_in_folders', true),
+                    'max_image_size'         => config('glideinabox.max_image_size', null)
+                ];
+
+                $watermarkFilesystemPath = config('glideinabox.watermarks', null);
+                if ($watermarkFilesystemPath !== null) {
+                    $serverConfig['watermarks'] = new LeagueFilesSystem(new Local($watermarkFilesystemPath));
+                    $serverConfig['watermarks_path_prefix'] = config(
+                        'glideinabox.watermarks_path_prefix',
+                        '.watermarks'
+                    );
+                }
+
+                return ServerFactory::create($serverConfig);
             }
         );
 
