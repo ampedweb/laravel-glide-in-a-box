@@ -28,7 +28,7 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
                 [
                     __DIR__ . '/../config/glideinabox.php' => config_path('glideinabox.php'),
                 ],
-                'config'
+                'glideinabox'
             );
         }
     }
