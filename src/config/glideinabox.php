@@ -5,17 +5,17 @@ return [
     'cache_path_prefix' => '.cache',
     'base_url'          => 'img',
     'source'            => public_path('storage'),
-    'max_image_size' => 2000 * 2000,
-    'presets' => [
-    'small'  => [
-        'w'   => 200,
-        'h'   => 200,
-        'fit' => 'crop',
-    ],
-    'medium' => [
-        'w'   => 600,
-        'h'   => 400,
-        'fit' => 'crop',
+    'max_image_size'    => 2000 * 2000,
+    'presets'           => [
+        'small'  => [
+            'w'   => 200,
+            'h'   => 200,
+            'fit' => 'crop',
+        ],
+        'medium' => [
+            'w'   => 600,
+            'h'   => 400,
+            'fit' => 'crop',
+        ]
     ]
-]
 ];
