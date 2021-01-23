@@ -10,7 +10,9 @@ Out of the box solution for Glide PHP for Laravel
 Requirements
 ------------
 
-* PHP >= 7.3;
+* PHP >= 7.3 with the following extensions:
+  * Exif
+  * GD
 * league/glide-laravel": "^1.0",
 
 Features
