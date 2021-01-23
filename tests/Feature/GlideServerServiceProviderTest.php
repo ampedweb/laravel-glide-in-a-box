@@ -60,6 +60,9 @@ class GlideServerServiceProviderTest extends TestCase
         $this->assertInstanceOf(Local::class, $adapter);
 
         $this->assertEquals($watermarkPath . '/', $adapter->getPathPrefix());
+
+        /* Clean up created directory.  Yes, really. */
+        rmdir(__DIR__ . '/../../foo');
     }
 
     public function testMakeGlideUrlBinding()
