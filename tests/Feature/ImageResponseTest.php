@@ -5,6 +5,7 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Tests\TestCase;
+use AmpedWeb\GlideInABox\Util\GlideUrl;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
@@ -76,4 +77,14 @@ class ImageResponseTest extends TestCase
         $imgResponse->assertForbidden();
     }
 
+    public function testUrlBuilderIsFluent()
+    {
+        $glideUrl = glide_url('cat.png')->build();
+
+        $this->assertInstanceOf(GlideUrl::class, $glideUrl);
+
+        $response = $this->get($glideUrl->url());
+
+        $response->assertOk();
+    }
 }
