@@ -22,6 +22,10 @@ class GlideUrl
      */
     protected $urlFactory;
 
+    /**
+     * @var array
+     */
+    protected $buildParams;
 
     /**
      * GlideUrl constructor.
@@ -103,4 +107,63 @@ class GlideUrl
         return url($this->urlFactory->getUrl($this->parsedPath(), $params));
     }
 
+    /*
+     * Fluent Interface Functions
+     */
+
+
+    public function build(): GlideUrl
+    {
+        $this->buildParams = [];
+
+        return $this;
+    }
+
+    public function url(): string
+    {
+        return url($this->urlFactory->getUrl($this->parsedPath(), $this->buildParams));
+    }
+
+    /*
+     * Image Format
+     */
+
+    public function gif(int $quality = null)
+    {
+        $this->buildParams['fm'] = 'gif';
+        return $this->quality($quality);
+    }
+
+    public function jpeg(int $quality = null): GlideUrl
+    {
+        $this->buildParams['fm'] = 'jpg';
+        return $this->quality($quality);
+    }
+
+    public function pjpeg(int $quality = null): GlideUrl
+    {
+        $this->buildParams['fm'] = 'pjpg';
+        return $this->quality($quality);
+    }
+
+    public function png(int $quality = null): GlideUrl
+    {
+        $this->buildParams['fm'] = 'png';
+        return $this->quality($quality);
+    }
+
+    public function webp(int $quality = null): GlideUrl
+    {
+        $this->buildParams['fm'] = 'webp';
+        return $this->quality($quality);
+    }
+
+    public function quality(int $quality = null): GlideUrl
+    {
+        if ($quality !== null) {
+            $this->buildParams['q'] = $quality;
+        }
+
+        return $this;
+    }
 }
