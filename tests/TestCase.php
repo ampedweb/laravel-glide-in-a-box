@@ -6,23 +6,14 @@ use AmpedWeb\GlideInABox\Providers\GlideInABoxRoutesProvider;
 use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
 use AmpedWeb\GlideInABox\Providers\GlideSignatureValidationServiceProvider;
 use AmpedWeb\GlideInABox\Providers\SignatureServiceProvider;
-use Illuminate\Config\Repository;
-use Illuminate\Container\Container;
-use Illuminate\Routing\RouteCollection;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
-use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-
-        /** @var Router $router */
-        $router = $this->app->get('router');
 
         Artisan::call('storage:link');
         // additional setup
@@ -59,12 +50,5 @@ class TestCase extends \Orchestra\Testbench\TestCase
             SignatureServiceProvider::class,
             GlideInABoxRoutesProvider::class
         ];
-    }
-
-    /**
-     * Setup logging
-     */
-    protected function getEnvironmentSetUp($app)
-    {
     }
 }
