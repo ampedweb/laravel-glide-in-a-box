@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
+use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
 use AmpedWeb\GlideInABox\Tests\TestCase;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 use Config;
@@ -66,5 +67,11 @@ class GlideServerServiceProviderTest extends TestCase
         $glideUrl = $this->app->make(GlideUrl::class);
 
         $this->assertInstanceOf(GlideUrl::class, $glideUrl);
+    }
+
+    public function testServiceProvidesServer()
+    {
+        $service = new GlideServerServiceProvider($this->app);
+        $this->assertContains(Server::class, $service->provides());
     }
 }
