@@ -16,6 +16,9 @@ Types of changes
 
 ## [Unreleased]
 
+### Added
+* .gitignore
+
 ## 1.0.0 - [Date]
 
 ### Features
