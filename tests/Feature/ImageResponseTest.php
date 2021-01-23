@@ -7,13 +7,13 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 use AmpedWeb\GlideInABox\Tests\TestCase;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
-use Intervention\Image\Facades\Image;
 
 class ImageResponseTest extends TestCase
 {
 
-    protected function putImage()
+    public function setUp(): void
     {
+        parent::setUp();
         $testImageFile = __DIR__ . '/../fixtures/cat.png';
         $this->assertFileExists($testImageFile);
         $testImageFile = new File($testImageFile);
@@ -22,10 +22,7 @@ class ImageResponseTest extends TestCase
 
     public function testCustomImageResponse()
     {
-
-        $this->putImage();
-
-        $glideUrl = glide_url('cat.png')->custom(['w' => 200]);
+        $glideUrl = glide_url('/cat.png')->custom(['w' => 200]);
 
         $imgResponse = $this->get($glideUrl);
 
@@ -37,8 +34,6 @@ class ImageResponseTest extends TestCase
 
     public function testPresetImageResponse()
     {
-        $this->putImage();
-
         $glideUrl = glide_url('cat.png')->preset('large');
 
         $imgResponse = $this->get($glideUrl);
@@ -50,9 +45,6 @@ class ImageResponseTest extends TestCase
 
     public function testPresetImageResponseWithArray()
     {
-
-        $this->putImage();
-
         $glideUrl = glide_url('cat.png')->preset(['large']);
 
         $imgResponse = $this->get($glideUrl);
@@ -64,9 +56,6 @@ class ImageResponseTest extends TestCase
 
     public function testNoSignatureResponse()
     {
-
-        $this->putImage();
-
         $glideUrl = glide_url('cat.png')->preset(['large']);
 
         //Lets remove our signature from the URL
@@ -79,7 +68,7 @@ class ImageResponseTest extends TestCase
 
         unset($queries['s']);
 
-        $noSigUrl = $baseUrl.='?'.http_build_query($queries);
+        $noSigUrl = $baseUrl . '?' . http_build_query($queries);
 
         $imgResponse = $this->get($noSigUrl);
 
