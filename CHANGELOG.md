@@ -18,6 +18,10 @@ Types of changes
 
 ### Added
 * .gitignore
+* PHP extension requirements
+
+### Fixed
+* Broken unit tests in ImageResponseTest
 
 ## 1.0.0 - [Date]
 
