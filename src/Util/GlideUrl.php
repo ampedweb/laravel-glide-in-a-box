@@ -50,21 +50,13 @@ class GlideUrl
     /**
      * @return mixed
      */
-    protected function parsedPath()
+    public function getParsedPath()
     {
         if (Str::startsWith($this->path, '/storage/')) {
             $this->path = Str::replaceFirst('/storage/', '', $this->path);
         }
 
         return Str::of($this->path)->replace('\\', '/');
-    }
-
-    /**
-     * @return string
-     */
-    public function getParsedPath():string
-    {
-        return $this->parsedPath();
     }
 
     /**
@@ -93,7 +85,7 @@ class GlideUrl
      */
     public function preset($presets, array $params = [])
     {
-        return url($this->urlFactory->getUrl($this->parsedPath(), array_merge($this->parsePresets($presets), $params)));
+        return url($this->urlFactory->getUrl($this->getParsedPath(), array_merge($this->parsePresets($presets), $params)));
     }
 
     /**
@@ -104,7 +96,7 @@ class GlideUrl
     public function custom(array $params = [])
     {
 
-        return url($this->urlFactory->getUrl($this->parsedPath(), $params));
+        return url($this->urlFactory->getUrl($this->getParsedPath(), $params));
     }
 
     /*
@@ -112,6 +104,11 @@ class GlideUrl
      */
 
 
+    /**
+     * Start building an image configuration
+     *
+     * @return $this
+     */
     public function build(): GlideUrl
     {
         $this->buildParams = [];
@@ -119,9 +116,14 @@ class GlideUrl
         return $this;
     }
 
+    /**
+     * Get the URL to your image after building the configuration
+     *
+     * @return string
+     */
     public function url(): string
     {
-        return url($this->urlFactory->getUrl($this->parsedPath(), $this->buildParams));
+        return url($this->urlFactory->getUrl($this->getParsedPath(), $this->buildParams));
     }
 
     /*
