@@ -23,7 +23,7 @@ class ImageResponseTest extends ImageTestCase
 
     public function testPresetImageResponse()
     {
-        $glideUrl = glide_url('cat.png')->preset('large');
+        $glideUrl = glide_url('cat.png')->preset('large')->url();
 
         $imgResponse = $this->get($glideUrl);
 
@@ -34,7 +34,7 @@ class ImageResponseTest extends ImageTestCase
 
     public function testPresetImageResponseWithArray()
     {
-        $glideUrl = glide_url('cat.png')->preset(['large']);
+        $glideUrl = glide_url('cat.png')->preset(['large'])->url();
 
         $imgResponse = $this->get($glideUrl);
 
@@ -45,7 +45,7 @@ class ImageResponseTest extends ImageTestCase
 
     public function testNoSignatureResponse()
     {
-        $glideUrl = glide_url('cat.png')->preset(['large']);
+        $glideUrl = glide_url('cat.png')->preset(['large'])->url();
 
         //Lets remove our signature from the URL
         $parsedUrl = parse_url($glideUrl);

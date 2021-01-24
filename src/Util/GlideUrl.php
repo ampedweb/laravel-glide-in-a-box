@@ -78,14 +78,17 @@ class GlideUrl
     }
 
     /**
+     * Start building an image URL based on a preset
+     *
      * @param       $presets
      * @param array $params
      *
-     * @return mixed
+     * @return GlideUrl
      */
-    public function preset($presets, array $params = [])
+    public function preset($presets, array $params = []): GlideUrl
     {
-        return url($this->urlFactory->getUrl($this->getParsedPath(), array_merge($this->parsePresets($presets), $params)));
+        $this->buildParams = array_merge($this->parsePresets($presets), $params);
+        return $this;
     }
 
     /**
