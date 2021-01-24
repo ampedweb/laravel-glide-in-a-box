@@ -19,6 +19,11 @@ Types of changes
 ### Added
 * .gitignore
 * PHP extension requirements
+* Orientation trait
+* Encode trait
+
+### Changed
+* GlideUrl::preset starts an image builder instead of returning an image URL
 
 ### Fixed
 * Broken unit tests in ImageResponseTest
