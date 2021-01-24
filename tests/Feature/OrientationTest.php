@@ -31,13 +31,13 @@ class OrientationTest extends ImageTestCase
 
     public function testOrientationIsFluent()
     {
-        $glideUrl = $this->glideUrl->orientation(Orientation::$AUTO);
+        $glideUrl = $this->glideUrl->orientation(Orientation::$ORIENTATION_AUTO);
         $this->assertEquals($this->glideUrl, $glideUrl);
     }
 
     public function testOrientationSetsCorrectValueAuto()
     {
-        $this->glideUrl->orientation(Orientation::$AUTO);
+        $this->glideUrl->orientation(Orientation::$ORIENTATION_AUTO);
         $this->assertEquals('auto', $this->glideUrl->getParams()['or']);
     }
 
