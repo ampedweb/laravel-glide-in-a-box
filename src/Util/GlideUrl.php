@@ -4,12 +4,14 @@
 namespace AmpedWeb\GlideInABox\Util;
 
 
+use AmpedWeb\GlideInABox\Traits\Encode;
 use Illuminate\Support\Str;
 use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
+    use Encode;
 
     /**
      * The filepath of our image being manipulated
@@ -129,46 +131,13 @@ class GlideUrl
         return url($this->urlFactory->getUrl($this->getParsedPath(), $this->buildParams));
     }
 
-    /*
-     * Image Format
+    /**
+     * Get the current set of image builder parameters
+     *
+     * @return array
      */
-
-    public function gif(int $quality = null)
+    public function getParams(): array
     {
-        $this->buildParams['fm'] = 'gif';
-        return $this->quality($quality);
-    }
-
-    public function jpeg(int $quality = null): GlideUrl
-    {
-        $this->buildParams['fm'] = 'jpg';
-        return $this->quality($quality);
-    }
-
-    public function pjpeg(int $quality = null): GlideUrl
-    {
-        $this->buildParams['fm'] = 'pjpg';
-        return $this->quality($quality);
-    }
-
-    public function png(int $quality = null): GlideUrl
-    {
-        $this->buildParams['fm'] = 'png';
-        return $this->quality($quality);
-    }
-
-    public function webp(int $quality = null): GlideUrl
-    {
-        $this->buildParams['fm'] = 'webp';
-        return $this->quality($quality);
-    }
-
-    public function quality(int $quality = null): GlideUrl
-    {
-        if ($quality !== null) {
-            $this->buildParams['q'] = $quality;
-        }
-
-        return $this;
+        return $this->buildParams;
     }
 }

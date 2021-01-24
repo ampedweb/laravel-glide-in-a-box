@@ -6,7 +6,7 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 use AmpedWeb\GlideInABox\Tests\ImageTestCase;
 
-class ImageFormatTest extends ImageTestCase
+class EncodeTest extends ImageTestCase
 {
     public function testGif()
     {
@@ -91,5 +91,14 @@ class ImageFormatTest extends ImageTestCase
         $this->assertEquals('RIFF', $firstIdentifyingBytes);
         $this->assertEquals('WEBP', $secondIdentifyingBytes);
         $this->assertEquals('VP8', $thirdIdentifyingBytes);
+    }
+
+    public function testQuality()
+    {
+        $desiredQuality = 45;
+
+        $glideBuilder = glide_url('cat.png')->build()->jpeg($desiredQuality);
+
+        $this->assertEquals($desiredQuality, $glideBuilder->getParams()['q']);
     }
 }
