@@ -4,23 +4,11 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Tests\TestCase;
+use AmpedWeb\GlideInABox\Tests\ImageTestCase;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
 
-class ImageResponseTest extends TestCase
+class ImageResponseTest extends ImageTestCase
 {
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $testImageFile = __DIR__ . '/../fixtures/cat.png';
-        $this->assertFileExists($testImageFile);
-        $testImageFile = new File($testImageFile);
-        Storage::putFileAs('/public', $testImageFile, 'cat.png');
-    }
-
     public function testCustomImageResponse()
     {
         $glideUrl = glide_url('/cat.png')->custom(['w' => 200]);
