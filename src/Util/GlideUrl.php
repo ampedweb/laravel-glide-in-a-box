@@ -56,6 +56,14 @@ class GlideUrl
     }
 
     /**
+     * @return string
+     */
+    public function getParsedPath():string
+    {
+        return $this->parsedPath();
+    }
+
+    /**
      * Parse either single or multiple presets
      *
      * @param $presets
