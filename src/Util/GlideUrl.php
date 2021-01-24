@@ -5,6 +5,7 @@ namespace AmpedWeb\GlideInABox\Util;
 
 
 use AmpedWeb\GlideInABox\Traits\Encode;
+use AmpedWeb\GlideInABox\Traits\Flip;
 use AmpedWeb\GlideInABox\Traits\Orientation;
 use Illuminate\Support\Str;
 use League\Glide\Urls\UrlBuilder;
@@ -12,7 +13,7 @@ use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
-    use Encode, Orientation;
+    use Orientation, Flip, Encode;
 
     /**
      * The filepath of our image being manipulated
