@@ -9,8 +9,9 @@ use AmpedWeb\GlideInABox\Util\GlideUrl;
 /**
  * Trait Encode
  *
- * @see https://glide.thephpleague.com/1.0/api/encode/
+ * @property array $buildParams
  *
+ * @see https://glide.thephpleague.com/1.0/api/encode/
  * @package AmpedWeb\GlideInABox\Traits
  */
 trait Encode
