@@ -37,6 +37,7 @@ class GlideUrl
     public function __construct()
     {
         $this->urlFactory = UrlBuilderFactory::create('/' . config('glideinabox.base_url') . '/', config('glideinabox.signature_key'));
+        $this->buildParams = [];
     }
 
 
