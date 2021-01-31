@@ -15,4 +15,9 @@ class GlideUrlTest extends TestCase
         $glideUrl->setPath('/storage/foo/bar');
         $this->assertEquals('foo/bar', $glideUrl->getParsedPath());
     }
+
+    public function testBuiltParamsArrayIsInitialised()
+    {
+        $this->assertIsArray((new GlideUrl())->getParams());
+    }
 }

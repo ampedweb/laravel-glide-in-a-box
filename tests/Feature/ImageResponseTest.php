@@ -4,22 +4,11 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Tests\TestCase;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use AmpedWeb\GlideInABox\Tests\ImageTestCase;
+use AmpedWeb\GlideInABox\Util\GlideUrl;
 
-class ImageResponseTest extends TestCase
+class ImageResponseTest extends ImageTestCase
 {
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $testImageFile = __DIR__ . '/../fixtures/cat.png';
-        $this->assertFileExists($testImageFile);
-        $testImageFile = new File($testImageFile);
-        Storage::putFileAs('/public', $testImageFile, 'cat.png');
-    }
-
     public function testCustomImageResponse()
     {
         $glideUrl = glide_url('/cat.png')->custom(['w' => 200]);
@@ -34,7 +23,7 @@ class ImageResponseTest extends TestCase
 
     public function testPresetImageResponse()
     {
-        $glideUrl = glide_url('cat.png')->preset('large');
+        $glideUrl = glide_url('cat.png')->preset('large')->url();
 
         $imgResponse = $this->get($glideUrl);
 
@@ -45,7 +34,7 @@ class ImageResponseTest extends TestCase
 
     public function testPresetImageResponseWithArray()
     {
-        $glideUrl = glide_url('cat.png')->preset(['large']);
+        $glideUrl = glide_url('cat.png')->preset(['large'])->url();
 
         $imgResponse = $this->get($glideUrl);
 
@@ -56,7 +45,7 @@ class ImageResponseTest extends TestCase
 
     public function testNoSignatureResponse()
     {
-        $glideUrl = glide_url('cat.png')->preset(['large']);
+        $glideUrl = glide_url('cat.png')->preset(['large'])->url();
 
         //Lets remove our signature from the URL
         $parsedUrl = parse_url($glideUrl);
@@ -76,4 +65,14 @@ class ImageResponseTest extends TestCase
         $imgResponse->assertForbidden();
     }
 
+    public function testUrlBuilderIsFluent()
+    {
+        $glideUrl = glide_url('cat.png')->build();
+
+        $this->assertInstanceOf(GlideUrl::class, $glideUrl);
+
+        $response = $this->get($glideUrl->url());
+
+        $response->assertOk();
+    }
 }
