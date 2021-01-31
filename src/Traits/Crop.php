@@ -6,23 +6,67 @@ namespace AmpedWeb\GlideInABox\Traits;
 use AmpedWeb\GlideInABox\Exceptions\InvalidCropPositionException;
 
 /**
- * Trait Crop
+ * This trait exposes image cropping functionality.
  *
  * @property array $buildParams
  *
- * @see     https://glide.thephpleague.com/1.0/api/crop/
+ * @link     https://glide.thephpleague.com/1.0/api/crop/
  * @package AmpedWeb\GlideInABox\Traits
  */
 trait Crop
 {
+    /**
+     * @var string Select "top left" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_TOP_LEFT = 'crop-top-left';
+
+    /**
+     * @var string Select "top centre" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_TOP = 'crop-top';
+
+    /**
+     * @var string Select "top right" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_TOP_RIGHT = 'crop-top-right';
+
+    /**
+     * @var string Select "centre left" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_LEFT = 'crop-left';
+
+    /**
+     * @var string Select "centre" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_CENTER = 'crop-center';
+
+    /**
+     * @var string Select "centre right" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_RIGHT = 'crop-right';
+
+    /**
+     * @var string Select "bottom left" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_BOTTOM_LEFT = 'crop-bottom-left';
+
+    /**
+     * @var string Select "bottom centre" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_BOTTOM = 'crop-bottom';
+
+    /**
+     * @var string Select "bottom right" crop position
+     * @see Crop::cropToPosition()
+     */
     public static $CROP_BOTTOM_RIGHT = 'crop-bottom-right';
 
     /**
