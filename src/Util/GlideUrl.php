@@ -8,6 +8,7 @@ use AmpedWeb\GlideInABox\Traits\Crop;
 use AmpedWeb\GlideInABox\Traits\Encode;
 use AmpedWeb\GlideInABox\Traits\Flip;
 use AmpedWeb\GlideInABox\Traits\Orientation;
+use AmpedWeb\GlideInABox\Traits\PixelDensity;
 use AmpedWeb\GlideInABox\Traits\Size;
 use Illuminate\Support\Str;
 use League\Glide\Urls\UrlBuilder;
@@ -15,7 +16,7 @@ use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
-    use Orientation, Flip, Crop, Size, Encode;
+    use Orientation, Flip, Crop, Size, PixelDensity, Encode;
 
     /**
      * The filepath of our image being manipulated
