@@ -25,6 +25,8 @@ Types of changes
 * Flip Trait
 * Size Trait
 * PixelDensity Trait
+* Adjustment Trait
+* Effects Trait
 
 ### Changed
 * GlideUrl::preset starts an image builder instead of returning an image URL
