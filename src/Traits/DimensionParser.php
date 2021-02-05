@@ -6,6 +6,12 @@ namespace AmpedWeb\GlideInABox\Traits;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
 
+/**
+ * This trait parses relative dimensions.
+ *
+ * @link https://glide.thephpleague.com/1.0/api/relative-dimensions/
+ * @package AmpedWeb\GlideInABox\Traits
+ */
 trait DimensionParser
 {
     /**
@@ -27,6 +33,8 @@ trait DimensionParser
     }
 
     /**
+     * Identify a numeric value
+     *
      * @param $value
      *
      * @return bool
@@ -38,6 +46,13 @@ trait DimensionParser
         return (preg_match($numberRegex, $value) > 0);
     }
 
+    /**
+     * Parse a relative dimension
+     *
+     * @param $dimension
+     *
+     * @return string  0-100(w|h)
+     */
     protected function parseRelativeDimension($dimension)
     {
         $numberRegex = '/^([0-9]+)/';
@@ -60,6 +75,20 @@ trait DimensionParser
         return sprintf('%s%s', $number, $axis);
     }
 
+    /**
+     * Parse either an absolute or relative dimension.
+     *
+     * Absolute dimensions are clamped to positive numbers.
+     * Relative dimension are contained within the range 0-100.
+     *
+     * If the provided $dimension is neither an integer nor a valid
+     * relative dimension, an InvalidDimensionException is thrown.
+     *
+     * @param $dimension
+     *
+     * @return int|string
+     * @throws InvalidDimensionException
+     */
     protected function parseDimension($dimension)
     {
         if ($this->dimensionIsRelative($dimension)) {
@@ -67,7 +96,7 @@ trait DimensionParser
         }
 
         if ($this->valueIsNumber($dimension)) {
-            return abs($dimension);
+            return (int)abs($dimension);
         }
 
         throw new InvalidDimensionException();
