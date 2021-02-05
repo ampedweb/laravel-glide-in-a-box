@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Traits;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidBorderMethodException;
+use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
 
 /**
  * This trait exposes the image border functionality.
@@ -13,6 +14,8 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidBorderMethodException;
  */
 trait Border
 {
+    use DimensionParser;
+
     /**
      * @property array $buildParams
      */
@@ -47,7 +50,8 @@ trait Border
      *                        - Border::$BORDERMETHOD_EXPAND
      *
      * @return Border
-     * @throws InvalidBorderMethodException
+     * @throws InvalidBorderMethodException|InvalidDimensionException
+     * @see DimensionParser::parseDimension()
      */
     public function border($width, $colour, $method = 'overlay')
     {
@@ -58,7 +62,12 @@ trait Border
             throw new InvalidBorderMethodException();
         }
 
-        $this->buildParams['border'] = sprintf('%s,%s,%s', $width, $colour, $method);
+        $this->buildParams['border'] = sprintf(
+            '%s,%s,%s',
+            $this->parseDimension($width),
+            $colour,
+            $method
+        );
 
         return $this;
     }
