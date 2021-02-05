@@ -24,6 +24,7 @@ Types of changes
 * Crop trait
 * Flip Trait
 * Size Trait
+* Adjustment Trait
 * Effects Trait
 
 ### Changed
