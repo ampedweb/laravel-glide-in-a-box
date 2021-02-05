@@ -24,6 +24,9 @@ Types of changes
 * Crop trait
 * Flip Trait
 * Size Trait
+* PixelDensity Trait
+* Adjustment Trait
+* Effects Trait
 * Border Trait
 * DimensionParser Trait
 * ColourParser Trait
