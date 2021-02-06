@@ -19,6 +19,7 @@ Features
 --------
 
 * Automatically signed urls when using the glide url Laravel helper
+* Fluent interface for all of glide image api see here: [https://glide.thephpleague.com/1.0/api/quick-reference/][See here: http://glide.thephpleague.com]
 
 
 Installation
@@ -32,3 +33,5 @@ Running Tests:
 
     php vendor/bin/phpunit
 
+
+[See here: http://glide.thephpleague.com]: https://glide.thephpleague.com/1.0/api/quick-reference/
