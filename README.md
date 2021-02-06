@@ -26,7 +26,19 @@ Installation
 ============
 
     composer require ampedweb/laravel-glide-in-a-box
-   
+
+Publish the config file:
+
+    php artisan vendor:publish --tag=glideinabox
+
+
+Extension
+============
+If you would like to use your own image controller but still use the base functionality from the package then you will need to 
+extend:
+
+    AmpedWeb\GlideInABox\Controller\GlideImageController;
+
 
 Running Tests:
 --------
