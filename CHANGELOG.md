@@ -31,6 +31,7 @@ Types of changes
 * DimensionParser Trait
 * ColourParser Trait
 * Background Trait
+* Watermarks Trait
 
 ### Changed
 * GlideUrl::preset starts an image builder instead of returning an image URL
