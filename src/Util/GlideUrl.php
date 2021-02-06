@@ -5,6 +5,7 @@ namespace AmpedWeb\GlideInABox\Util;
 
 
 use AmpedWeb\GlideInABox\Traits\Adjustments;
+use AmpedWeb\GlideInABox\Traits\Border;
 use AmpedWeb\GlideInABox\Traits\Crop;
 use AmpedWeb\GlideInABox\Traits\Effects;
 use AmpedWeb\GlideInABox\Traits\Encode;
@@ -18,7 +19,7 @@ use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
-    use Orientation, Flip, Crop, Size, PixelDensity, Adjustments, Effects, Encode;
+    use Orientation, Flip, Crop, Size, PixelDensity, Adjustments, Effects, Border, Encode;
 
     /**
      * The filepath of our image being manipulated

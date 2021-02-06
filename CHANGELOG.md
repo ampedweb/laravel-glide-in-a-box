@@ -27,6 +27,9 @@ Types of changes
 * PixelDensity Trait
 * Adjustment Trait
 * Effects Trait
+* Border Trait
+* DimensionParser Trait
+* ColourParser Trait
 
 ### Changed
 * GlideUrl::preset starts an image builder instead of returning an image URL
