@@ -14,13 +14,14 @@ use AmpedWeb\GlideInABox\Traits\Flip;
 use AmpedWeb\GlideInABox\Traits\Orientation;
 use AmpedWeb\GlideInABox\Traits\PixelDensity;
 use AmpedWeb\GlideInABox\Traits\Size;
+use AmpedWeb\GlideInABox\Traits\Watermarks;
 use Illuminate\Support\Str;
 use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
-    use Orientation, Flip, Crop, Size, PixelDensity, Adjustments, Effects, Border, Background, Encode;
+    use Orientation, Flip, Crop, Size, PixelDensity, Adjustments, Effects, Border, Watermarks, Background, Encode;
 
     /**
      * The filepath of our image being manipulated

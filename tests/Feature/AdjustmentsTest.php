@@ -108,6 +108,11 @@ class AdjustmentsTest extends TestCase
         $this->assertSame($this->glideUrl->contrast(45), $this->glideUrl->con(45));
     }
 
+    public function testGammaIsAnAliasOfGam()
+    {
+        $this->assertSame($this->glideUrl->gamma(45), $this->glideUrl->gam(45));
+    }
+
     public function testSharpenIsAnAliasOfSharp()
     {
         $this->assertSame($this->glideUrl->sharpen(45), $this->glideUrl->sharp(45));
