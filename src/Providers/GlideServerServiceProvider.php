@@ -56,8 +56,9 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
             function ($app) {
 
 
-                $sourceFileSystemPath = config('glideinabox.source', public_path('storage'));
-                $sourceFileSystem = new LeagueFilesSystem(new Local($sourceFileSystemPath));
+                $sourceFileSystem = new LeagueFilesSystem(
+                    config('glideinabox.source', public_path('storage'))
+                );
 
 
                 $serverConfig = [
