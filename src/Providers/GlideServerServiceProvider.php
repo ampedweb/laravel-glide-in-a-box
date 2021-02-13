@@ -79,11 +79,8 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
                 $watermarkFilesystemPath = config('glideinabox.watermarks', null);
                 if ($watermarkFilesystemPath !== null) {
-                    $serverConfig['watermarks'] = new LeagueFilesSystem(new Local($watermarkFilesystemPath));
-                    $serverConfig['watermarks_path_prefix'] = config(
-                        'glideinabox.watermarks_path_prefix',
-                        '.watermarks'
-                    );
+                    $serverConfig['watermarks'] = new LeagueFilesSystem($watermarkFilesystemPath);
+                    $serverConfig['watermarks_path_prefix'] = config('glideinabox.watermarks_path_prefix', '.watermarks');
                 }
 
                 return ServerFactory::create($serverConfig);

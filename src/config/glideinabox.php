@@ -7,6 +7,9 @@ return [
     'cache_path_prefix' => '.cache',
     'base_url'          => 'img',
     'source'            => new Local(public_path('storage')),
+    //Example for watermarks
+    //'watermarks' => new Local(public_path('storage/watermarks')),
+    // watermarks_path_prefix =>'.watermarks'
     'max_image_size'    => 2000 * 2000,
     'presets'           => [
         'small'  => [
