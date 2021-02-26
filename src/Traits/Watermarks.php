@@ -4,8 +4,10 @@
 namespace AmpedWeb\GlideInABox\Traits;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
+use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkPositionException;
+use AmpedWeb\GlideInABox\Interfaces\Fit;
 
 /**
  * This trait provides watermarks functionality
@@ -133,13 +135,13 @@ trait Watermarks
      */
     public function markFit(string $fit = 'contain')
     {
-        if ($fit !== Size::$FIT_CONTAIN &&
-            $fit !== Size::$FIT_CROP &&
-            $fit !== Size::$FIT_FILL &&
-            $fit !== Size::$FIT_MAX &&
-            $fit !== Size::$FIT_STRETCH
+        if ($fit !== Fit::CONTAIN &&
+            $fit !== Fit::CROP &&
+            $fit !== Fit::FILL &&
+            $fit !== Fit::MAX &&
+            $fit !== Fit::STRETCH
         ) {
-            throw new InvalidMarkFitException();
+            throw new InvalidFitException();
         }
 
         $this->buildParams['markfit'] = $fit;

@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
+use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkPositionException;
 use AmpedWeb\GlideInABox\Tests\TestCase;
@@ -100,7 +101,7 @@ class WatermarksTest extends TestCase
 
     public function testMarkFitThrowsExceptionIfInvalidParameterIsPassed()
     {
-        $this->expectException(InvalidMarkFitException::class);
+        $this->expectException(InvalidFitException::class);
 
         $this->glideUrl->markFit('foo');
     }
