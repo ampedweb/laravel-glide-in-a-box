@@ -16,6 +16,16 @@ Types of changes
 
 ## [Unreleased]
 
+### Changed
+* Fit constants moved from Size trait to Fit interface
+
+### Fixed
+* GlideServerServiceProvider crashes when not given an instance of AdapterInterface for watermarkPath.  
+  This is done by either passing the configuration paramater directly or, if it is not an instance of 
+  AdapterInterface, wrapping it in a Local filesystem instance before passing it.
+
+## 0.1.0
+
 ### Added
 * .gitignore
 * PHP extension requirements
