@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Traits;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidOrientationException;
+use AmpedWeb\GlideInABox\Interfaces\Rotate;
 
 /**
  * Trait Orientation
@@ -33,22 +34,22 @@ trait Orientation
      *                            - '180'
      *                            - '270'.
      *                            Or you can use one of the convenient static variables:
-     *                            - Orientation::$ORIENTATION_AUTO
-     *                            - Orientation::$ORIENTATION_0
-     *                            - Orientation::$ORIENTATION_90
-     *                            - Orientation::$ORIENTATION_180
-     *                            - Orientation::$ORIENTATION_270
+     *                            - Rotate::AUTO
+     *                            - Rotate::R0
+     *                            - Rotate::R90
+     *                            - Rotate::R180
+     *                            - Rotate::R270
      *
      * @return $this
      * @throws InvalidOrientationException
      */
     public function orientation(string $orientation)
     {
-        if ($orientation !== static::$ORIENTATION_AUTO &&
-            $orientation !== static::$ORIENTATION_0 &&
-            $orientation !== static::$ORIENTATION_90 &&
-            $orientation !== static::$ORIENTATION_180 &&
-            $orientation !== static::$ORIENTATION_270
+        if ($orientation !== Rotate::AUTO &&
+            $orientation !== Rotate::R0 &&
+            $orientation !== Rotate::R90 &&
+            $orientation !== Rotate::R180 &&
+            $orientation !== Rotate::R270
         ) {
             throw new InvalidOrientationException();
         }
