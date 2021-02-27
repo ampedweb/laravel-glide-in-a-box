@@ -24,6 +24,7 @@ Types of changes
 * All traits moved to `Can` namespace and named appropriately  
   For example: `Effects` is now known as `HasEffects`
 * Crop constants moved from Crop trait to Crop interface
+* Border constants moved from Border trait to Border interface
 
 ### Fixed
 * GlideServerServiceProvider crashes when not given an instance of AdapterInterface for watermarkPath.  
