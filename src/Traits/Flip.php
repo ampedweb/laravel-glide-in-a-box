@@ -15,10 +15,6 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
  */
 trait Flip
 {
-    public static $FLIP_BOTH = 'both';
-    public static $FLIP_H = 'h';
-    public static $FLIP_V = 'v';
-
     /**
      * Flip the image
      *
@@ -26,19 +22,19 @@ trait Flip
      *                     - 'both',
      *                     - 'h',
      *                     - 'v'.
-     *                     Or you can use a static variable:
-     *                     - Flip::$FLIP_BOTH
-     *                     - FLip::$FLIP_H
-     *                     - Flip::$FLIP_V
+     *                     Or you can use the interface constants:
+     *                     - Flip::BOTH
+     *                     - FLip::HORIZONTAL
+     *                     - Flip::VERTICAL
      *
      * @return $this
      * @throws InvalidFlipException
      */
     public function flip(string $flip)
     {
-        if ($flip !== static::$FLIP_BOTH &&
-            $flip !== static::$FLIP_H &&
-            $flip !== static::$FLIP_V
+        if ($flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::BOTH &&
+            $flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::HORIZONTAL &&
+            $flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::VERTICAL
         ) {
             throw new InvalidFlipException();
         }

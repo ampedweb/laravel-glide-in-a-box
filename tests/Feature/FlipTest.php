@@ -5,8 +5,8 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
+use AmpedWeb\GlideInABox\Interfaces\Flip;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Flip;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 
 class FlipTest extends TestCase
@@ -31,19 +31,19 @@ class FlipTest extends TestCase
 
     public function testFlipSetsCorrectValueV()
     {
-        $this->glideUrl->flip(Flip::$FLIP_V);
+        $this->glideUrl->flip(Flip::VERTICAL);
         $this->assertEquals('v', $this->glideUrl->getParams()['flip']);
     }
 
     public function testFlipSetsCorrectValueH()
     {
-        $this->glideUrl->flip(Flip::$FLIP_H);
+        $this->glideUrl->flip(Flip::HORIZONTAL);
         $this->assertEquals('h', $this->glideUrl->getParams()['flip']);
     }
 
     public function testFlipSetsCorrectValueBoth()
     {
-        $this->glideUrl->flip(Flip::$FLIP_BOTH);
+        $this->glideUrl->flip(Flip::BOTH);
         $this->assertEquals('both', $this->glideUrl->getParams()['flip']);
     }
 }
