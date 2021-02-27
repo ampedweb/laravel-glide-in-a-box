@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidCropPositionException;
+use AmpedWeb\GlideInABox\Interfaces\Crop;
 
 /**
  * This trait exposes image cropping functionality.
@@ -15,60 +16,6 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidCropPositionException;
  */
 trait HasCrop
 {
-    /**
-     * @var string Select "top left" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_TOP_LEFT = 'crop-top-left';
-
-    /**
-     * @var string Select "top centre" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_TOP = 'crop-top';
-
-    /**
-     * @var string Select "top right" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_TOP_RIGHT = 'crop-top-right';
-
-    /**
-     * @var string Select "centre left" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_LEFT = 'crop-left';
-
-    /**
-     * @var string Select "centre" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_CENTER = 'crop-center';
-
-    /**
-     * @var string Select "centre right" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_RIGHT = 'crop-right';
-
-    /**
-     * @var string Select "bottom left" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_BOTTOM_LEFT = 'crop-bottom-left';
-
-    /**
-     * @var string Select "bottom centre" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_BOTTOM = 'crop-bottom';
-
-    /**
-     * @var string Select "bottom right" crop position
-     * @see HasCrop::cropToPosition()
-     */
-    public static $CROP_BOTTOM_RIGHT = 'crop-bottom-right';
-
     /**
      * Resizes the image to fill the width and height boundaries.  Crops any excess image data.
      *
@@ -107,31 +54,32 @@ trait HasCrop
      *                         - 'crop-bottom-left',
      *                         - 'crop-bottom',
      *                         - 'crop-bottom-right'.
-     *                         Or, you can use one of the handy static variables:
-     *                         - Crop::$CROP_TOP_LEFT
-     *                         - Crop::$CROP_TOP
-     *                         - Crop::$CROP_TOP_RIGHT
-     *                         - Crop::$CROP_LEFT
-     *                         - Crop::$CROP_CENTER
-     *                         - Crop::$CROP_RIGHT
-     *                         - Crop::$CROP_BOTTOM_LEFT
-     *                         - Crop::$CROP_BOTTOM
-     *                         - Crop::$CROP_BOTTOM_RIGHT
+     *                         Or, you can use one of the handy interface constants:
+     *                         - Crop::TOP_LEFT
+     *                         - Crop::TOP
+     *                         - Crop::TOP_RIGHT
+     *                         - Crop::LEFT
+     *                         - Crop::CENTER
+     *                         - Crop::RIGHT
+     *                         - Crop::BOTTOM_LEFT
+     *                         - Crop::BOTTOM
+     *                         - Crop::BOTTOM_RIGHT
      *
      * @return $this
      * @throws InvalidCropPositionException
+     * @see Crop
      */
     public function cropToPosition(int $width, int $height, string $position)
     {
-        if ($position !== static::$CROP_TOP_LEFT &&
-            $position !== static::$CROP_TOP &&
-            $position !== static::$CROP_TOP_RIGHT &&
-            $position !== static::$CROP_LEFT &&
-            $position !== static::$CROP_CENTER &&
-            $position !== static::$CROP_RIGHT &&
-            $position !== static::$CROP_BOTTOM_LEFT &&
-            $position !== static::$CROP_BOTTOM &&
-            $position !== static::$CROP_BOTTOM_RIGHT
+        if ($position !== Crop::TOP_LEFT &&
+            $position !== Crop::TOP &&
+            $position !== Crop::TOP_RIGHT &&
+            $position !== Crop::LEFT &&
+            $position !== Crop::CENTER &&
+            $position !== Crop::RIGHT &&
+            $position !== Crop::BOTTOM_LEFT &&
+            $position !== Crop::BOTTOM &&
+            $position !== Crop::BOTTOM_RIGHT
         ) {
             throw new InvalidCropPositionException();
         }
