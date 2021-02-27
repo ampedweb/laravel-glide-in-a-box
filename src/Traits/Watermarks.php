@@ -8,6 +8,7 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidMarkPositionException;
 use AmpedWeb\GlideInABox\Interfaces\Fit;
+use AmpedWeb\GlideInABox\Interfaces\Position;
 
 /**
  * This trait provides watermarks functionality
@@ -221,15 +222,15 @@ trait Watermarks
      */
     public function markPos(string $position = 'center')
     {
-        if ($position !== static::$MARKPOS_TOP_LEFT &&
-            $position !== static::$MARKPOS_TOP &&
-            $position !== static::$MARKPOS_TOP_RIGHT &&
-            $position !== static::$MARKPOS_LEFT &&
-            $position !== static::$MARKPOS_CENTER &&
-            $position !== static::$MARKPOS_RIGHT &&
-            $position !== static::$MARKPOS_BOTTOM_LEFT &&
-            $position !== static::$MARKPOS_BOTTOM &&
-            $position !== static::$MARKPOS_BOTTOM_RIGHT
+        if ($position !== Position::TOP_LEFT &&
+            $position !== Position::TOP &&
+            $position !== Position::TOP_RIGHT &&
+            $position !== Position::LEFT &&
+            $position !== Position::CENTER &&
+            $position !== Position::RIGHT &&
+            $position !== Position::BOTTOM_LEFT &&
+            $position !== Position::BOTTOM &&
+            $position !== Position::BOTTOM_RIGHT
         ) {
             throw new InvalidMarkPositionException();
         }
