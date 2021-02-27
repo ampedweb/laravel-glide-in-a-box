@@ -23,6 +23,7 @@ Types of changes
 * Rotation constants moved from Orientation trait to Rotate interface
 * All traits moved to `Can` namespace and named appropriately  
   For example: `Effects` is now known as `HasEffects`
+* Crop constants moved from Crop trait to Crop interface
 
 ### Fixed
 * GlideServerServiceProvider crashes when not given an instance of AdapterInterface for watermarkPath.  
