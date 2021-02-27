@@ -1,9 +1,10 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
+use AmpedWeb\GlideInABox\Interfaces\Flip;
 
 /**
  * Trait Flip
@@ -11,9 +12,9 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
  * @property array $buildParams
  *
  * @see https://glide.thephpleague.com/1.0/api/flip/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Flip
+trait HasFlip
 {
     /**
      * Flip the image
@@ -32,9 +33,9 @@ trait Flip
      */
     public function flip(string $flip)
     {
-        if ($flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::BOTH &&
-            $flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::HORIZONTAL &&
-            $flip !== \AmpedWeb\GlideInABox\Interfaces\Flip::VERTICAL
+        if ($flip !== Flip::BOTH &&
+            $flip !== Flip::HORIZONTAL &&
+            $flip !== Flip::VERTICAL
         ) {
             throw new InvalidFlipException();
         }

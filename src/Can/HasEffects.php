@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFilterException;
 use AmpedWeb\GlideInABox\Interfaces\Filter;
@@ -10,9 +10,9 @@ use AmpedWeb\GlideInABox\Interfaces\Filter;
  * This trait exposes image effects functionality
  *
  * @link    https://glide.thephpleague.com/1.0/api/effects/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Effects
+trait HasEffects
 {
     /**
      * @property array $buildParams
@@ -23,7 +23,7 @@ trait Effects
      *
      * @param int $blur Blur - use values between 0 and 100
      *
-     * @return Effects
+     * @return HasEffects
      */
     public function blur(int $blur = 0)
     {
@@ -40,7 +40,7 @@ trait Effects
      *
      * @param int $pixelation Pixelation - use values between 0 and 1000
      *
-     * @return Effects
+     * @return HasEffects
      */
     public function pixel(int $pixelation = 0)
     {
@@ -57,8 +57,8 @@ trait Effects
      *
      * @param int $pixelation Pixelation - use values between 0 and 1000
      *
-     * @return Effects|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Effects::pixel()
+     * @return HasEffects|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasEffects::pixel()
      */
     public function pixelate(int $pixelation = 0)
     {
@@ -76,7 +76,7 @@ trait Effects
      *                       - Filter::GREYSCALE,
      *                       - Filter::SEPIA
      *
-     * @return Effects
+     * @return HasEffects
      * @throws InvalidFilterException
      */
     public function filt(string $filter)
@@ -102,9 +102,9 @@ trait Effects
      *                       - Effects::$FILTER_GREYSCALE,
      *                       - Effects::$FILTER_SEPIA
      *
-     * @return Effects|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @return HasEffects|\AmpedWeb\GlideInABox\Util\GlideUrl
      * @throws InvalidFilterException
-     * @see Effects::filt()
+     * @see HasEffects::filt()
      */
     public function filter(string $filter)
     {

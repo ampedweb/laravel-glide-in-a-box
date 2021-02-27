@@ -4,24 +4,24 @@
 namespace AmpedWeb\GlideInABox\Util;
 
 
-use AmpedWeb\GlideInABox\Traits\Adjustments;
-use AmpedWeb\GlideInABox\Traits\Background;
-use AmpedWeb\GlideInABox\Traits\Border;
-use AmpedWeb\GlideInABox\Traits\Crop;
-use AmpedWeb\GlideInABox\Traits\Effects;
-use AmpedWeb\GlideInABox\Traits\Encode;
-use AmpedWeb\GlideInABox\Traits\Flip;
-use AmpedWeb\GlideInABox\Traits\Orientation;
-use AmpedWeb\GlideInABox\Traits\PixelDensity;
-use AmpedWeb\GlideInABox\Traits\Size;
-use AmpedWeb\GlideInABox\Traits\Watermarks;
+use AmpedWeb\GlideInABox\Can\HasAdjustments;
+use AmpedWeb\GlideInABox\Can\HasBackground;
+use AmpedWeb\GlideInABox\Can\HasBorder;
+use AmpedWeb\GlideInABox\Can\HasCrop;
+use AmpedWeb\GlideInABox\Can\HasEffects;
+use AmpedWeb\GlideInABox\Can\HasEncode;
+use AmpedWeb\GlideInABox\Can\HasFlip;
+use AmpedWeb\GlideInABox\Can\HasOrientation;
+use AmpedWeb\GlideInABox\Can\HasPixelDensity;
+use AmpedWeb\GlideInABox\Can\HasSize;
+use AmpedWeb\GlideInABox\Can\HasWatermarks;
 use Illuminate\Support\Str;
 use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideUrl
 {
-    use Orientation, Flip, Crop, Size, PixelDensity, Adjustments, Effects, Border, Watermarks, Background, Encode;
+    use HasOrientation, HasFlip, HasCrop, HasSize, HasPixelDensity, HasAdjustments, HasEffects, HasBorder, HasWatermarks, HasBackground, HasEncode;
 
     /**
      * The filepath of our image being manipulated

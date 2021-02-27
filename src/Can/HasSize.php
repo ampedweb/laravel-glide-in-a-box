@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidSizeFitException;
@@ -13,9 +13,9 @@ use AmpedWeb\GlideInABox\Interfaces\Fit;
  * @property array $buildParams
  *
  * @link     https://glide.thephpleague.com/1.0/api/size/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Size
+trait HasSize
 {
     /**
      * Sets how the image is fitted to its target dimensions.
@@ -87,7 +87,7 @@ trait Size
      * @param int $width
      * @param int $height
      *
-     * @return Size|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @return HasSize|\AmpedWeb\GlideInABox\Util\GlideUrl
      */
     public function size(int $width, int $height)
     {

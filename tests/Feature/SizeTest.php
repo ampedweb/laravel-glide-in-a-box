@@ -7,7 +7,7 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
 use AmpedWeb\GlideInABox\Interfaces\Fit;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Size;
+use AmpedWeb\GlideInABox\Can\HasSize;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 use function glide_url;
 

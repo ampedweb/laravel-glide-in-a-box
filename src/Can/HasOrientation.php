@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidOrientationException;
 use AmpedWeb\GlideInABox\Interfaces\Rotate;
@@ -12,9 +12,9 @@ use AmpedWeb\GlideInABox\Interfaces\Rotate;
  * @property array $buildParams
  *
  * @see     https://glide.thephpleague.com/1.0/api/orientation/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Orientation
+trait HasOrientation
 {
     public static $ORIENTATION_AUTO = 'auto';
     public static $ORIENTATION_0 = '0';

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
@@ -13,12 +13,12 @@ use AmpedWeb\GlideInABox\Interfaces\Position;
 /**
  * This trait provides watermarks functionality
  *
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  * @link    https://glide.thephpleague.com/1.0/api/watermarks/
  */
-trait Watermarks
+trait HasWatermarks
 {
-    use DimensionParser;
+    use HasDimensionParser;
 
     /**
      * @property array $buildParams
@@ -58,7 +58,7 @@ trait Watermarks
      *
      * @param string $filename
      *
-     * @return Watermarks
+     * @return HasWatermarks
      */
     public function mark(string $filename)
     {
@@ -72,7 +72,7 @@ trait Watermarks
      *
      * @param string $dimension
      *
-     * @return Watermarks
+     * @return HasWatermarks
      * @throws InvalidDimensionException
      */
     public function markWidth(string $dimension)
@@ -87,7 +87,7 @@ trait Watermarks
      *
      * @param string $dimension
      *
-     * @return Watermarks
+     * @return HasWatermarks
      * @throws InvalidDimensionException
      */
     public function markHeight(string $dimension)
@@ -131,7 +131,7 @@ trait Watermarks
      *                    image data. The resulting image will match the width and height constraints without
      *                    distorting the image. See the crop page for more information.
      *
-     * @return Watermarks
+     * @return HasWatermarks
      * @throws InvalidMarkFitException
      */
     public function markFit(string $fit = 'contain')
@@ -157,7 +157,7 @@ trait Watermarks
      *
      * @param string $dimension
      *
-     * @return Watermarks
+     * @return HasWatermarks
      * @throws InvalidDimensionException
      */
     public function markX(string $dimension)
@@ -174,7 +174,7 @@ trait Watermarks
      *
      * @param string $dimension
      *
-     * @return Watermarks
+     * @return HasWatermarks
      * @throws InvalidDimensionException
      */
     public function markY(string $dimension)
@@ -192,7 +192,7 @@ trait Watermarks
      *
      * @param string $dimension
      *
-     * @return Watermarks
+     * @return HasWatermarks
      */
     public function markPad(string $dimension)
     {
@@ -218,7 +218,7 @@ trait Watermarks
      *                         - `bottom`,
      *                         - `bottom-right`.
      *
-     * @return Watermarks
+     * @return HasWatermarks
      */
     public function markPos(string $position = 'center')
     {

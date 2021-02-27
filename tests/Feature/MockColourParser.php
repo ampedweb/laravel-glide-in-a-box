@@ -4,11 +4,11 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Traits\ColourParser;
+use AmpedWeb\GlideInABox\Can\HasColourParser;
 
 class MockColourParser
 {
-    use ColourParser {
+    use HasColourParser {
         isDefaultColour as _isDefaultColour;
         isThreeDigitRgb as _isThreeDigitRgb;
         isFourDigitArgb as _isFourDigitArgb;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidBorderMethodException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidColourException;
@@ -11,11 +11,11 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
  * This trait exposes the image border functionality.
  *
  * @link    https://glide.thephpleague.com/1.0/api/border/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Border
+trait HasBorder
 {
-    use ColourParser, DimensionParser;
+    use HasColourParser, HasDimensionParser;
 
     /**
      * @property array $buildParams
@@ -50,11 +50,11 @@ trait Border
      *                        - Border::$BORDERMETHOD_SHRINK,
      *                        - Border::$BORDERMETHOD_EXPAND
      *
-     * @return Border
+     * @return HasBorder
      * @throws InvalidBorderMethodException
      * @throws InvalidDimensionException
      * @throws InvalidColourException
-     * @see DimensionParser::parseDimension()
+     * @see HasDimensionParser::parseDimension()
      */
     public function border($width, $colour, $method = 'overlay')
     {
