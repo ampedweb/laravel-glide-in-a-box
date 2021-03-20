@@ -17,6 +17,7 @@ Types of changes
 ## [Unreleased]
 
 ### Changed
+* glide_url helper function handles null input gracefully
 * Fit constants moved from Size trait to Fit interface
 * Watermark constants moved from Watermark trait to Position interface
 * Filter constants moved from Effects trait to Filter interface
