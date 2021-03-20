@@ -20,4 +20,9 @@ class GlideUrlTest extends TestCase
     {
         $this->assertIsArray((new GlideUrl())->getParams());
     }
+
+    public function testHelperHandlesNullInputGracefully()
+    {
+        $this->assertEquals('', glide_url());
+    }
 }
