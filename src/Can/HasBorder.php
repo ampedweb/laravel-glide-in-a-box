@@ -1,34 +1,26 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidBorderMethodException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidColourException;
 use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
+use AmpedWeb\GlideInABox\Interfaces\Border;
 
 /**
  * This trait exposes the image border functionality.
  *
  * @link    https://glide.thephpleague.com/1.0/api/border/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Border
+trait HasBorder
 {
-    use ColourParser, DimensionParser;
+    use HasColourParser, HasDimensionParser;
 
     /**
      * @property array $buildParams
      */
-
-    /** @var string $BORDERMETHOD_OVERLAY Place border on top of image (default). */
-    public static $BORDERMETHOD_OVERLAY = 'overlay';
-
-    /** @var string $BORDERMETHOD_SHRINK Shrink image within border (canvas does not change). */
-    public static $BORDERMETHOD_SHRINK = 'shrink';
-
-    /** @var string $BORDERMETHOD_EXPAND Expands canvas to accommodate border. */
-    public static $BORDERMETHOD_EXPAND = 'expand';
 
     /**
      * Add a border to the image.
@@ -45,22 +37,23 @@ trait Border
      *                        - 'shrink': Shrink image within border (canvas does not change)
      *                        - 'expand': Expands canvas to accommodate border
      *
-     *                        These are also available as static strings:
+     *                        These are also available as interface constants:
      *                        - Border::$BORDERMETHOD_OVERLAY,
      *                        - Border::$BORDERMETHOD_SHRINK,
      *                        - Border::$BORDERMETHOD_EXPAND
      *
-     * @return Border
+     * @return HasBorder
      * @throws InvalidBorderMethodException
      * @throws InvalidDimensionException
      * @throws InvalidColourException
-     * @see DimensionParser::parseDimension()
+     * @see HasDimensionParser::parseDimension()
+     * @see Border
      */
     public function border($width, $colour, $method = 'overlay')
     {
-        if ($method !== static::$BORDERMETHOD_OVERLAY &&
-            $method !== static::$BORDERMETHOD_SHRINK &&
-            $method !== static::$BORDERMETHOD_EXPAND
+        if ($method !== Border::OVERLAY &&
+            $method !== Border::SHRINK &&
+            $method !== Border::EXPAND
         ) {
             throw new InvalidBorderMethodException();
         }

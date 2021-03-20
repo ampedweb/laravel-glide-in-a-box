@@ -5,8 +5,8 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFilterException;
+use AmpedWeb\GlideInABox\Interfaces\Filter;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Effects;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 
 class EffectsTest extends TestCase
@@ -49,8 +49,8 @@ class EffectsTest extends TestCase
 
     public function testFiltSetsCorrectValues()
     {
-        $this->glideUrl->filt(Effects::$FILTER_SEPIA);
-        $this->assertEquals(Effects::$FILTER_SEPIA, $this->glideUrl->getParams()['filt']);
+        $this->glideUrl->filt(Filter::SEPIA);
+        $this->assertEquals(Filter::SEPIA, $this->glideUrl->getParams()['filt']);
     }
 
     public function testBlurFlattensOutOfRangeValues()
@@ -85,7 +85,7 @@ class EffectsTest extends TestCase
 
     public function testFilterIsAliasOfFilt()
     {
-        $this->assertSame($this->glideUrl->filter(Effects::$FILTER_SEPIA),
-                          $this->glideUrl->filt(Effects::$FILTER_SEPIA));
+        $this->assertSame($this->glideUrl->filter(Filter::SEPIA),
+                          $this->glideUrl->filt(Filter::SEPIA));
     }
 }

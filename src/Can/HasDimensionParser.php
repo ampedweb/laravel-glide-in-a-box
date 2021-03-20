@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
@@ -10,9 +10,9 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidDimensionException;
  * This trait parses relative dimensions.
  *
  * @link https://glide.thephpleague.com/1.0/api/relative-dimensions/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait DimensionParser
+trait HasDimensionParser
 {
     /**
      * @property array $buildParams

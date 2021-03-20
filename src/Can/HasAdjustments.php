@@ -1,15 +1,15 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 /**
  * Exposes image "adjustments" functionality
  *
  * @link    https://glide.thephpleague.com/1.0/api/adjustments/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Adjustments
+trait HasAdjustments
 {
     /**
      * @property array $buildParams
@@ -36,8 +36,8 @@ trait Adjustments
      *
      * @param int $brightness Brightness - use values between 0 and 100
      *
-     * @return Adjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Adjustments::bri()
+     * @return HasAdjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasAdjustments::bri()
      */
     public function brightness(int $brightness = 0)
     {
@@ -65,8 +65,8 @@ trait Adjustments
      *
      * @param int $contrast Contrast - use values between 0 and 100
      *
-     * @return Adjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Adjustments::con()
+     * @return HasAdjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasAdjustments::con()
      */
     public function contrast(int $contrast = 0)
     {
@@ -94,8 +94,8 @@ trait Adjustments
      *
      * @param float $gamma Gamma - use values between 0.1 and 9.99
      *
-     * @return Adjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Adjustments::gam()
+     * @return HasAdjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasAdjustments::gam()
      */
     public function gamma(float $gamma = 1.0)
     {
@@ -123,8 +123,8 @@ trait Adjustments
      *
      * @param int $sharpness Shaprness - use values between 0 and 100
      *
-     * @return Adjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Adjustments::sharp()
+     * @return HasAdjustments|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasAdjustments::sharp()
      */
     public function sharpen(int $sharpness = 0)
     {

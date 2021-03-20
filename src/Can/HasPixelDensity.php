@@ -1,15 +1,15 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 /**
  * This trait exposes pixel density functionality
  *
  * @link    https://glide.thephpleague.com/1.0/api/pixel-density/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait PixelDensity
+trait HasPixelDensity
 {
     /**
      * @property array $buildParams

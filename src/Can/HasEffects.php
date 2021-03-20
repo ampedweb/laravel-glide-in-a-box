@@ -1,34 +1,29 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFilterException;
+use AmpedWeb\GlideInABox\Interfaces\Filter;
 
 /**
  * This trait exposes image effects functionality
  *
  * @link    https://glide.thephpleague.com/1.0/api/effects/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Effects
+trait HasEffects
 {
     /**
      * @property array $buildParams
      */
-
-    /** @var string $FILTER_SEPIA Apply a "sepia" filter to the image */
-    public static $FILTER_SEPIA = 'sepia';
-
-    /** @var string $FILTER_GREYSCALE Apply a "greyscale" filter to the image */
-    public static $FILTER_GREYSCALE = 'greyscale';
 
     /**
      * Adds a blur effect to the image. Use values between 0 and 100.
      *
      * @param int $blur Blur - use values between 0 and 100
      *
-     * @return Effects
+     * @return HasEffects
      */
     public function blur(int $blur = 0)
     {
@@ -45,7 +40,7 @@ trait Effects
      *
      * @param int $pixelation Pixelation - use values between 0 and 1000
      *
-     * @return Effects
+     * @return HasEffects
      */
     public function pixel(int $pixelation = 0)
     {
@@ -62,8 +57,8 @@ trait Effects
      *
      * @param int $pixelation Pixelation - use values between 0 and 1000
      *
-     * @return Effects|\AmpedWeb\GlideInABox\Util\GlideUrl
-     * @see Effects::pixel()
+     * @return HasEffects|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @see HasEffects::pixel()
      */
     public function pixelate(int $pixelation = 0)
     {
@@ -78,16 +73,16 @@ trait Effects
      *                       - 'sepia'.
      *
      *                       Or, you can use one of the static strings:
-     *                       - Effects::$FILTER_GREYSCALE,
-     *                       - Effects::$FILTER_SEPIA
+     *                       - Filter::GREYSCALE,
+     *                       - Filter::SEPIA
      *
-     * @return Effects
+     * @return HasEffects
      * @throws InvalidFilterException
      */
     public function filt(string $filter)
     {
-        if ($filter !== static::$FILTER_GREYSCALE &&
-            $filter !== static::$FILTER_SEPIA) {
+        if ($filter !== Filter::GREYSCALE &&
+            $filter !== Filter::SEPIA) {
             throw new InvalidFilterException();
         }
 
@@ -107,9 +102,9 @@ trait Effects
      *                       - Effects::$FILTER_GREYSCALE,
      *                       - Effects::$FILTER_SEPIA
      *
-     * @return Effects|\AmpedWeb\GlideInABox\Util\GlideUrl
+     * @return HasEffects|\AmpedWeb\GlideInABox\Util\GlideUrl
      * @throws InvalidFilterException
-     * @see Effects::filt()
+     * @see HasEffects::filt()
      */
     public function filter(string $filter)
     {

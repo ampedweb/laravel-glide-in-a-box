@@ -4,8 +4,17 @@ use AmpedWeb\GlideInABox\Util\GlideUrl;
 
 if (!function_exists('glide_url')) {
 
-    function glide_url($path)
+    /**
+     * @param null $path
+     *
+     * @return GlideUrl|string
+     */
+    function glide_url($path = null)
     {
+        if ($path === null) {
+            return '';
+        }
+
         return (new GlideUrl())->setPath($path);
     }
 

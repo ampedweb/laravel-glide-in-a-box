@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 
 use AmpedWeb\GlideInABox\Util\GlideUrl;
@@ -12,16 +12,16 @@ use AmpedWeb\GlideInABox\Util\GlideUrl;
  * @property array $buildParams
  *
  * @see https://glide.thephpleague.com/1.0/api/encode/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Encode
+trait HasEncode
 {
     /**
      * Encode the image to GIF
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function gif(int $quality = null)
     {
@@ -34,7 +34,7 @@ trait Encode
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function jpeg(int $quality = null)
     {
@@ -47,7 +47,7 @@ trait Encode
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function pjpeg(int $quality = null)
     {
@@ -60,7 +60,7 @@ trait Encode
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function png(int $quality = null)
     {
@@ -73,7 +73,7 @@ trait Encode
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function webp(int $quality = null)
     {
@@ -86,7 +86,7 @@ trait Encode
      *
      * @param int|null $quality
      *
-     * @return GlideUrl|Encode
+     * @return GlideUrl|HasEncode
      */
     public function quality(int $quality = null)
     {

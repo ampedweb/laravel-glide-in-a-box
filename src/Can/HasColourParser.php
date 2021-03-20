@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidColourException;
 use function preg_match;
@@ -13,10 +13,10 @@ use function strtoupper;
  * Glide supports a variety of color formats. In addition to the 140 color names supported by all modern browsers
  * (listed below), Glide accepts hexadecimal RGB and RBG alpha formats.
  *
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  * @link    https://glide.thephpleague.com/1.0/api/colors/
  */
-trait ColourParser
+trait HasColourParser
 {
     /** @var string[] A list of default colour names */
     protected $colours = [

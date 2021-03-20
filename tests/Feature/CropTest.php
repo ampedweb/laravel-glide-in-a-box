@@ -5,8 +5,9 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidCropPositionException;
+use AmpedWeb\GlideInABox\Interfaces\Crop;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Crop;
+use AmpedWeb\GlideInABox\Can\HasCrop;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 
 class CropTest extends TestCase
@@ -43,12 +44,12 @@ class CropTest extends TestCase
 
     public function testCropToPositionIsFluent()
     {
-        $this->assertEquals($this->glideUrl, $this->glideUrl->cropToPosition(1, 2, Crop::$CROP_BOTTOM_LEFT));
+        $this->assertEquals($this->glideUrl, $this->glideUrl->cropToPosition(1, 2, Crop::BOTTOM_LEFT));
     }
     
     public function testCropToPositionSetsCorrectValues()
     {
-        $this->glideUrl->cropToPosition(100, 200, Crop::$CROP_BOTTOM_LEFT);
+        $this->glideUrl->cropToPosition(100, 200, Crop::BOTTOM_LEFT);
         $this->assertEquals('crop-bottom-left', $this->glideUrl->getParams()['fit']);
         $this->assertEquals(100, $this->glideUrl->getParams()['w']);
         $this->assertEquals(200, $this->glideUrl->getParams()['h']);
