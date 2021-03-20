@@ -1,9 +1,10 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
+use AmpedWeb\GlideInABox\Interfaces\Flip;
 
 /**
  * Trait Flip
@@ -11,14 +12,10 @@ use AmpedWeb\GlideInABox\Exceptions\InvalidFlipException;
  * @property array $buildParams
  *
  * @see https://glide.thephpleague.com/1.0/api/flip/
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  */
-trait Flip
+trait HasFlip
 {
-    public static $FLIP_BOTH = 'both';
-    public static $FLIP_H = 'h';
-    public static $FLIP_V = 'v';
-
     /**
      * Flip the image
      *
@@ -26,19 +23,19 @@ trait Flip
      *                     - 'both',
      *                     - 'h',
      *                     - 'v'.
-     *                     Or you can use a static variable:
-     *                     - Flip::$FLIP_BOTH
-     *                     - FLip::$FLIP_H
-     *                     - Flip::$FLIP_V
+     *                     Or you can use the interface constants:
+     *                     - Flip::BOTH
+     *                     - FLip::HORIZONTAL
+     *                     - Flip::VERTICAL
      *
      * @return $this
      * @throws InvalidFlipException
      */
     public function flip(string $flip)
     {
-        if ($flip !== static::$FLIP_BOTH &&
-            $flip !== static::$FLIP_H &&
-            $flip !== static::$FLIP_V
+        if ($flip !== Flip::BOTH &&
+            $flip !== Flip::HORIZONTAL &&
+            $flip !== Flip::VERTICAL
         ) {
             throw new InvalidFlipException();
         }

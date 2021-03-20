@@ -4,9 +4,10 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Exceptions\InvalidSizeFitException;
+use AmpedWeb\GlideInABox\Exceptions\InvalidFitException;
+use AmpedWeb\GlideInABox\Interfaces\Fit;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Size;
+use AmpedWeb\GlideInABox\Can\HasSize;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 use function glide_url;
 
@@ -24,43 +25,43 @@ class SizeTest extends TestCase
 
     public function testFitRejectsInvalidInput()
     {
-        $this->expectException(InvalidSizeFitException::class);
+        $this->expectException(InvalidFitException::class);
         $this->glide->fit('foo');
     }
 
     public function testFitSetsCorrectContainValue()
     {
-        $this->glide->fit(Size::$FIT_CONTAIN);
+        $this->glide->fit(Fit::CONTAIN);
         $this->assertEquals('contain', $this->glide->getParams()['fit']);
     }
 
     public function testFitSetsCorrectMaxValue()
     {
-        $this->glide->fit(Size::$FIT_MAX);
+        $this->glide->fit(Fit::MAX);
         $this->assertEquals('max', $this->glide->getParams()['fit']);
     }
 
     public function testFitSetsCorrectFillValue()
     {
-        $this->glide->fit(Size::$FIT_FILL);
+        $this->glide->fit(Fit::FILL);
         $this->assertEquals('fill', $this->glide->getParams()['fit']);
     }
 
     public function testFitSetsCorrectStretchValue()
     {
-        $this->glide->fit(Size::$FIT_STRETCH);
+        $this->glide->fit(Fit::STRETCH);
         $this->assertEquals('stretch', $this->glide->getParams()['fit']);
     }
 
     public function testFitSetsCorrectCropValue()
     {
-        $this->glide->fit(Size::$FIT_CROP);
+        $this->glide->fit(Fit::CROP);
         $this->assertEquals('crop', $this->glide->getParams()['fit']);
     }
 
     public function testFitIsFluent()
     {
-        $this->assertEquals($this->glide, $this->glide->fit(Size::$FIT_CROP));
+        $this->assertEquals($this->glide, $this->glide->fit(Fit::CROP));
     }
 
     public function testWidthSetsCorrectValue()

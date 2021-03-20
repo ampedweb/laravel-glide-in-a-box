@@ -6,7 +6,7 @@ namespace AmpedWeb\GlideInABox\Exceptions;
 
 use Exception;
 
-class InvalidSizeException extends Exception
+class InvalidSizeException extends GlideUrlException
 {
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AmpedWeb\GlideInABox\Traits;
+namespace AmpedWeb\GlideInABox\Can;
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidColourException;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
@@ -9,17 +9,17 @@ use AmpedWeb\GlideInABox\Util\GlideUrl;
 /**
  * This trait provides background-related functionality
  *
- * @package AmpedWeb\GlideInABox\Traits
+ * @package AmpedWeb\GlideInABox\Can
  *
  * @link    https://glide.thephpleague.com/1.0/api/background/
  */
-trait Background
+trait HasBackground
 {
     /**
      * @property array $buildParams
      */
 
-    use ColourParser;
+    use HasColourParser;
 
     /**
      * Sets the background color of the image.
@@ -44,9 +44,9 @@ trait Background
      *
      * @param string $colour
      *
-     * @return Background|GlideUrl
+     * @return HasBackground|GlideUrl
      * @throws InvalidColourException
-     * @see Background::bg()
+     * @see HasBackground::bg()
      */
     public function background(string $colour)
     {

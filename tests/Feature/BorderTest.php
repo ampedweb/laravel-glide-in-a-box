@@ -5,8 +5,8 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Exceptions\InvalidBorderMethodException;
+use AmpedWeb\GlideInABox\Interfaces\Border;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Traits\Border;
 use AmpedWeb\GlideInABox\Util\GlideUrl;
 
 class BorderTest extends TestCase
@@ -22,7 +22,7 @@ class BorderTest extends TestCase
 
     public function testBorderIsFluent()
     {
-        $this->assertEquals($this->glideUrl, $this->glideUrl->border(1, 'gray', Border::$BORDERMETHOD_OVERLAY));
+        $this->assertEquals($this->glideUrl, $this->glideUrl->border(1, 'gray', Border::OVERLAY));
     }
 
     public function testBorderThrowsInvalidBorderMethodExceptionWhenPassedAnInvalidMethodParameter()
@@ -34,9 +34,9 @@ class BorderTest extends TestCase
 
     public function testBorderSetsTheCorrectMethodValue()
     {
-        $this->glideUrl->border(1, '000000', Border::$BORDERMETHOD_OVERLAY);
+        $this->glideUrl->border(1, '000000', Border::OVERLAY);
         $this->assertEquals(
-            sprintf('%s,%s,%s', 1, '000000', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 1, '000000', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
     }
@@ -45,13 +45,13 @@ class BorderTest extends TestCase
     {
         $this->glideUrl->border(5, '000000');
         $this->assertEquals(
-            sprintf('%s,%s,%s', 5, '000000', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 5, '000000', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
 
         $this->glideUrl->border('8w', 'fff');
         $this->assertEquals(
-            sprintf('%s,%s,%s', '8w', 'FFF', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', '8w', 'FFF', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
     }
@@ -60,25 +60,25 @@ class BorderTest extends TestCase
     {
         $this->glideUrl->border(5, 'fff');
         $this->assertEquals(
-            sprintf('%s,%s,%s', 5, 'FFF', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 5, 'FFF', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
 
         $this->glideUrl->border(8, 'afff');
         $this->assertEquals(
-            sprintf('%s,%s,%s', 8, 'AFFF', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 8, 'AFFF', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
 
         $this->glideUrl->border(12, 'abcdef');
         $this->assertEquals(
-            sprintf('%s,%s,%s', 12, 'ABCDEF', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 12, 'ABCDEF', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
 
         $this->glideUrl->border(20, '12abcdef');
         $this->assertEquals(
-            sprintf('%s,%s,%s', 20, '12ABCDEF', Border::$BORDERMETHOD_OVERLAY),
+            sprintf('%s,%s,%s', 20, '12ABCDEF', Border::OVERLAY),
             $this->glideUrl->getParams()['border']
         );
     }

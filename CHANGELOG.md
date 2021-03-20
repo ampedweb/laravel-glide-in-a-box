@@ -16,6 +16,23 @@ Types of changes
 
 ## [Unreleased]
 
+### Changed
+* Fit constants moved from Size trait to Fit interface
+* Watermark constants moved from Watermark trait to Position interface
+* Filter constants moved from Effects trait to Filter interface
+* Rotation constants moved from Orientation trait to Rotate interface
+* All traits moved to `Can` namespace and named appropriately  
+  For example: `Effects` is now known as `HasEffects`
+* Crop constants moved from Crop trait to Crop interface
+* Border constants moved from Border trait to Border interface
+
+### Fixed
+* GlideServerServiceProvider crashes when not given an instance of AdapterInterface for watermarkPath.  
+  This is done by either passing the configuration paramater directly or, if it is not an instance of 
+  AdapterInterface, wrapping it in a Local filesystem instance before passing it.
+
+## 0.1.0
+
 ### Added
 * .gitignore
 * PHP extension requirements

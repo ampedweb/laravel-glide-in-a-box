@@ -4,11 +4,11 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Traits\DimensionParser;
+use AmpedWeb\GlideInABox\Can\HasDimensionParser;
 
 class MockDimensionParser
 {
-    use DimensionParser {
+    use HasDimensionParser {
         dimensionIsRelative as _dimensionIsRelative;
         valueIsNumber as _valueIsNumber;
         parseDimension as _parseDimension;
