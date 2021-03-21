@@ -14,7 +14,7 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
-## [Unreleased]
+## 0.2.0 - 2021-03-20
 
 ### Changed
 * glide_url helper function handles null input gracefully
