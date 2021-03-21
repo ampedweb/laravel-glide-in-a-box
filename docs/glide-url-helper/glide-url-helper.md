@@ -9,5 +9,5 @@ nav_order: 3
 # Glide URL Helper
 {: .no_toc }
 
-The `glide_url()` helper provides a fluent interface inside your Blade templates for the Glide PHP Image API.
+The `glide_url()` helper provides a fluent interface inside your Blade templates for the [Glide PHP Image API](https://glide.thephpleague.com/1.0/api/quick-reference/).
 {: .fs-6 .fw-300 }
