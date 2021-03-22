@@ -8,7 +8,7 @@ nav_order: 2
 # Background
 {: .no_toc }
 
-See original Glide PHP adjustment docs [here](https://glide.thephpleague.com/1.0/api/background/)
+See original Glide PHP background docs [here](https://glide.thephpleague.com/1.0/api/background/)
 
 All descriptions in bold italics are directly quoted from the above docs.
 
@@ -23,7 +23,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->bg('blue')->url()
 //OR
 glide_url('/path/to/your_amazing_image.jpeg')->background('blue')->url()
 
-//OR with HEX codes (greyish colour)
+//OR with HEX codes (greyish)
 
 glide_url('/path/to/your_amazing_image.jpeg')->bg('CCC')->url()
 //OR
