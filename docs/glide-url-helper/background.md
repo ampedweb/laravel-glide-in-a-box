@@ -28,5 +28,4 @@ glide_url('/path/to/your_amazing_image.jpeg')->background('blue')->url()
 glide_url('/path/to/your_amazing_image.jpeg')->bg('CCC')->url()
 //OR
 glide_url('/path/to/your_amazing_image.jpeg')->background('CCC')->url()
-
 ```
