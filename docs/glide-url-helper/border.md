@@ -12,7 +12,7 @@ See original Glide PHP border docs [here](https://glide.thephpleague.com/1.0/api
 
 All descriptions in bold italics are directly quoted from the above docs.
 
-***Add a border to the image. Required format: width,color,method.***
+Add a border to the image. Required format: width,color,method.
 
 [View all supported color formats here](https://glide.thephpleague.com/1.0/api/colors/)
 
