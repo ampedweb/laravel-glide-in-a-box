@@ -1,37 +1,62 @@
-## Welcome to GitHub Pages
+---
+layout: page
+title: Home
+permalink: /
+nav_order: 1
+---
 
-You can use the [editor on GitHub](https://github.com/ampedweb/laravel-glide-in-a-box/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+# Laravel Glide In A Box
+Out of the box solution for Glide PHP for Laravel
+{: .fs-6 .fw-300 }
+[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)  [![composer.lock](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/composerlock)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)  [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[View On Github](https://github.com/ampedweb/laravel-glide-in-a-box){: .btn }
 
-### Markdown
+---------------------------------------
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+## Requirements
 
-- Bulleted
-- List
+* PHP >= 7.3 with the following extensions:
+    * Exif
+    * GD  **or** ImageMagick
+* league/glide-laravel": "^1.0",
 
-1. Numbered
-2. List
+## Features
 
-**Bold** and _Italic_ and `Code` text
+* Automatically signed urls when using the `glide_url()` helper  function.
+* A fluent interface for all glide image api see here: [https://glide.thephpleague.com/1.0/api/quick-reference/][See here: http://glide.thephpleague.com] 
 
-[Link](url) and ![Image](src)
+
+## Getting Started
+
+### Installation
+
+    composer require ampedweb/laravel-glide-in-a-box
+
+Publish the config file:
+
+    php artisan vendor:publish --tag=glideinabox  
+
+
+### Basic Usage
+
+The base url "out of the box" for all glide image url requests is "/img/".  You can adjust this in the glideinabox.php config file once you have published it.
+
+Using the `glide_url()` helper function should make building your image urls simple.
+
+An example using a preset as a base and then making a few alterations using the fluent methods:
+```php
+glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ampedweb/laravel-glide-in-a-box/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+There are also predefined constants if you prefer using those rather than strings, e.g:
+```php
+glide_url($pathToYourImageFile)->preset('medium')->filter(Effects::$FILTER_SEPIA)->url();
+```
+You can also build a completely custom image with no preset.
+Below is a 200x100 px cropped webp image at 50% quality:
+```php
+glide_url($pathToYourImageFile)->size(200,100)->fit(Size::$FIT_CROP)->webp(50)->url();
+```
+Always remember to call the `->url()` method when you are done configuring your image.
