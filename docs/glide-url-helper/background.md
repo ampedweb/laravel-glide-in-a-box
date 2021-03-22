@@ -12,7 +12,7 @@ See original Glide PHP background docs [here](https://glide.thephpleague.com/1.0
 
 All descriptions in bold italics are directly quoted from the above docs.
 
-***Sets the background color of the image. See colors for more information on the available color formats.***
+Sets the background color of the image. See colors for more information on the available color formats.
 
 [View all supported color formats here](https://glide.thephpleague.com/1.0/api/colors/)
 
