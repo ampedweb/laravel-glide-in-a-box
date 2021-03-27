@@ -10,7 +10,7 @@ nav_order: 3
 
 See original Glide PHP border docs [here](https://glide.thephpleague.com/2.0/api/border/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 Add a border to the image. Required format: width,color,method.
 

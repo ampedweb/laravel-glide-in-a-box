@@ -10,7 +10,7 @@ nav_order: 2
 
 See original Glide PHP background docs [here](https://glide.thephpleague.com/2.0/api/background/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 Sets the background color of the image. See colors for more information on the available color formats.
 

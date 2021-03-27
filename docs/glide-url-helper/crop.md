@@ -11,7 +11,7 @@ nav_order: 4
 
 See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/crop/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 ---------------------
 ## Table of contents
