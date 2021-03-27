@@ -5,14 +5,16 @@ parent: Glide URL Helper (Image API)
 permalink: /glide-url-helper/size
 nav_order: 10
 ---
+
 # Size
 {: .no_toc }
 
-See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/size/)
+See original Glide PHP size docs [here](https://glide.thephpleague.com/2.0/api/size/)
 
 All descriptions are directly quoted from the above docs.
 
 ---------------------
+
 ## Table of contents
 {: .no_toc .text-delta }
 
@@ -29,7 +31,9 @@ Width of image is 250 pixels
 ```php 
 glide_url('/path/to/your_amazing_image.jpeg')->width(250)->url()
 ```
+
 ----------------------
+
 ## Height
 
 Sets the height of the image, in pixels.
@@ -39,12 +43,14 @@ Height of image is 250 pixels
 ```php 
 glide_url('/path/to/your_amazing_image.jpeg')->height(250)->url()
 ```
+
 ----------------------
+
 ## Width & Height
 
 Sets the width & height of the image at the same time.
 
-Width of image 500 & Height of image is 250  pixels
+Width of image 500 & Height of image is 250 pixels
 
 ```php 
 glide_url('/path/to/your_amazing_image.jpeg')->size(500,250)->url()
@@ -54,12 +60,14 @@ glide_url('/path/to/your_amazing_image.jpeg')->size(500,250)->url()
 
 Sets how the image is fitted to its target dimensions.
 
-Width of image 250 & Height of image is 250  pixels with a crop
+Width of image 250 & Height of image is 250 pixels with a crop
 
 ```php 
 glide_url('/path/to/your_amazing_image.jpeg')->size(250,250)->fit('crop')->url()
 ```
+
 #### Fit Constants
+
 ```php 
 
 /**

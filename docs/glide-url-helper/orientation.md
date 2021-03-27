@@ -5,14 +5,16 @@ parent: Glide URL Helper (Image API)
 permalink: /glide-url-helper/orientation
 nav_order: 8
 ---
+
 # Orientation
 {: .no_toc }
 
-See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/orientation/)
+See original Glide PHP orientation docs [here](https://glide.thephpleague.com/2.0/api/orientation/)
 
 All descriptions are directly quoted from the above docs.
 
 ---------------------
+
 ## Table of contents
 {: .no_toc .text-delta }
 
@@ -22,7 +24,8 @@ All descriptions are directly quoted from the above docs.
 
 ## Orientation
 
-Rotates the image. Accepts auto, 0, 90, 180 or 270. Default is auto. The auto option uses Exif data to automatically orient images correctly.
+Rotates the image. Accepts auto, 0, 90, 180 or 270. Default is auto. The auto option uses Exif data to automatically
+orient images correctly.
 
 Rotate the image 90 degrees
 
@@ -33,6 +36,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->orientation(Rotate::R90)->url()
 ```
 
 #### Orientation Constants
+
 ```php
 namespace AmpedWeb\GlideInABox\Interfaces\Orientation;
 
