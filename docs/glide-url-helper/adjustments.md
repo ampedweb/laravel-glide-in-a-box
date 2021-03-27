@@ -9,7 +9,7 @@ nav_order: 1
 # Adjustments
 {: .no_toc }
 
-See original Glide PHP adjustment docs [here](https://glide.thephpleague.com/1.0/api/adjustments/)
+See original Glide PHP adjustment docs [here](https://glide.thephpleague.com/2.0/api/adjustments/)
 
 All descriptions in bold italics are directly quoted from the above docs.
 

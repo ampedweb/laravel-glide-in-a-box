@@ -9,7 +9,7 @@ nav_order: 4
 # Crop
 {: .no_toc}
 
-See original Glide PHP crop docs [here](https://glide.thephpleague.com/1.0/api/crop/)
+See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/crop/)
 
 All descriptions in bold italics are directly quoted from the above docs.
 
