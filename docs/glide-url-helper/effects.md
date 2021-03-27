@@ -10,7 +10,7 @@ nav_order: 5
 
 See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/effects/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 ---------------------
 ## Table of contents

@@ -11,7 +11,7 @@ nav_order: 1
 
 See original Glide PHP adjustment docs [here](https://glide.thephpleague.com/2.0/api/adjustments/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 ---------------------
 
