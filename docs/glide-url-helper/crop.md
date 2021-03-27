@@ -9,9 +9,9 @@ nav_order: 4
 # Crop
 {: .no_toc}
 
-See original Glide PHP crop docs [here](https://glide.thephpleague.com/1.0/api/crop/)
+See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/crop/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 ---------------------
 ## Table of contents
@@ -46,6 +46,9 @@ glide_url('/path/to/your_amazing_image.jpeg')->cropToPosition(100,100,Crop::TOP_
 ```
 #### Position Constants
 ```php
+
+    namespace AmpedWeb\GlideInABox\Interfaces\Crop;
+
     Crop::TOP_LEFT // same as "crop-top-left"
     Crop::TOP // same as "top"
     Crop::TOP_RIGHT  // same as "crop-top-right"

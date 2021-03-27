@@ -8,13 +8,13 @@ nav_order: 2
 # Background
 {: .no_toc }
 
-See original Glide PHP background docs [here](https://glide.thephpleague.com/1.0/api/background/)
+See original Glide PHP background docs [here](https://glide.thephpleague.com/2.0/api/background/)
 
-All descriptions in bold italics are directly quoted from the above docs.
+All descriptions are directly quoted from the above docs.
 
 Sets the background color of the image. See colors for more information on the available color formats.
 
-[View all supported color formats here](https://glide.thephpleague.com/1.0/api/colors/)
+[View all supported color formats here](https://glide.thephpleague.com/2.0/api/colors/)
 
 Set the background colour of the image to blue
 
