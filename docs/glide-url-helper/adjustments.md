@@ -18,12 +18,11 @@ All descriptions are directly quoted from the above docs.
 ## Table of contents
 {: .no_toc .text-delta }
 
-1. TOC
+1. TOC 
 {:toc}
 ---
 
 ## Brightness
-
 Adjusts the image brightness. Use values between -100 and +100, where 0 represents no change.
 
 Get your image at 40% brighness:
@@ -34,7 +33,6 @@ glide_url('/path/to/your_amazing_image.jpeg')->brighness(40)->url()
 ```
 ----------------------
 ## Contrast
-
 Adjusts the image contrast. Use values between -100 and +100, where 0 represents no change.
 
 Get your image at 40% contrast:
@@ -45,7 +43,6 @@ glide_url('/path/to/your_amazing_image.jpeg')->contrast(40)->url()
 ```
 ----------------------
 ## Gamma
-
 Adjusts the image gamma. Use values between 0.1 and 9.99.
 
 
@@ -58,7 +55,6 @@ glide_url('/path/to/your_amazing_image.jpeg')->gamma(1.5)->url()
 ```
 ----------------------
 ## Sharpen
-
 Sharpen the image. Use values between 0 and 100.
 
 Get your image at 15 sharpness:
