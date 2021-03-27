@@ -8,13 +8,13 @@ nav_order: 3
 # Border
 {: .no_toc }
 
-See original Glide PHP border docs [here](https://glide.thephpleague.com/1.0/api/border/)
+See original Glide PHP border docs [here](https://glide.thephpleague.com/2.0/api/border/)
 
 All descriptions in bold italics are directly quoted from the above docs.
 
 Add a border to the image. Required format: width,color,method.
 
-[View all supported color formats here](https://glide.thephpleague.com/1.0/api/colors/)
+[View all supported color formats here](https://glide.thephpleague.com/2.0/api/colors/)
 
 ### Method
 Sets how the border will be displayed. Available options:
