@@ -12,6 +12,14 @@ See original Glide PHP crop docs [here](https://glide.thephpleague.com/2.0/api/f
 
 All descriptions are directly quoted from the above docs.
 
+---------------------
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+---
+
 ## Flip
 
 Flips the image. Accepts v, h and both.
@@ -24,7 +32,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->flip('v')->url()
 glide_url('/path/to/your_amazing_image.jpeg')->flip(Flip::VERTICAL)->url()
 ```
 
-#### Position Constants
+#### Flip Constants
 ```php
 namespace AmpedWeb\GlideInABox\Interfaces\Flip;
 
