@@ -53,14 +53,18 @@ glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
 There are also predefined constants if you prefer using those rather than strings, e.g:
 
 ```php
-glide_url($pathToYourImageFile)->preset('medium')->filter(Effects::$FILTER_SEPIA)->url();
+use AmpedWeb\GlideInABox\Interfaces\Filter;
+
+glide_url($pathToYourImageFile)->preset('medium')->filter(Filter::SEPIA)->url();
 ```
 
 You can also build a completely custom image with no preset.
 Below is a 200x100 px cropped webp image at 50% quality:
 
 ```php
-glide_url($pathToYourImageFile)->size(200,100)->fit(Size::$FIT_CROP)->webp(50)->url();
+use AmpedWeb\GlideInABox\Interfaces\Fit;
+
+glide_url($pathToYourImageFile)->size(200,100)->fit(Fit::CROP)->webp(50)->url();
 ```
 Always remember to call the `->url()` method when you are done configuring your image.
 
@@ -68,9 +72,9 @@ Extension
 ============  
 If you would like to use your own image controller but still use the base functionality from the package then you will need to extend:
 
-
-     AmpedWeb\GlideInABox\Controller\GlideImageController;  
-
+```php
+AmpedWeb\GlideInABox\Controller\GlideImageController;
+```
 
 Running Tests:
 --------  
