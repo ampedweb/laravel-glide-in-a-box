@@ -99,8 +99,8 @@ trait HasEffects
      *                       - 'sepia'.
      *
      *                       Or, you can use one of the static strings:
-     *                       - Effects::$FILTER_GREYSCALE,
-     *                       - Effects::$FILTER_SEPIA
+     *                       - Filter::GREYSCALE,
+     *                       - Filter::SEPIA
      *
      * @return HasEffects|\AmpedWeb\GlideInABox\Util\GlideUrl
      * @throws InvalidFilterException
