@@ -26,12 +26,15 @@ Features
 Installation
 ============  
 
-     composer require ampedweb/laravel-glide-in-a-box
+```
+composer require ampedweb/laravel-glide-in-a-box
+```
 
 Publish the config file:
 
-    php artisan vendor:publish --tag=glideinabox  
-
+```bash
+php artisan vendor:publish --tag=glideinabox  
+```
 
 Basic Usage
 ============  
@@ -43,15 +46,20 @@ Using the `glide_url()` helper function should make building your image urls sim
 
 An example using a preset as a base and then making a few alterations using the fluent methods:
 
-    glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
+```php
+glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
+```
 
 There are also predefined constants if you prefer using those rather than strings, e.g:
 
-    glide_url($pathToYourImageFile)->preset('medium')->filter(Effects::$FILTER_SEPIA)->url();
+```php
+glide_url($pathToYourImageFile)->preset('medium')->filter(Effects::$FILTER_SEPIA)->url();
+```
 
 You can also build a completely custom image with no preset.
 Below is a 200x100 px cropped webp image at 50% quality:
-```
+
+```php
 glide_url($pathToYourImageFile)->size(200,100)->fit(Size::$FIT_CROP)->webp(50)->url();
 ```
 Always remember to call the `->url()` method when you are done configuring your image.
@@ -67,6 +75,8 @@ If you would like to use your own image controller but still use the base functi
 Running Tests:
 --------  
 
+```bash
 php vendor/bin/phpunit
+```
 
-[See here: http://glide.thephpleague.com]: https://glide.thephpleague.com/1.0/api/quick-reference/
+See here: [https://glide.thephpleague.com](https://glide.thephpleague.com/1.0/api/quick-reference/)
