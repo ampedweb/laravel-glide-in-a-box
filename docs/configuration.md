@@ -13,8 +13,13 @@ Glide In A Box directly maps to the server factory configuration from the origin
 
 -------------------------
 
-Once you have published the config file you will be presented with the following:
-Feel free to configure these much in the same way you would a [server factory in Glide PHP](https://glide.thephpleague.com/1.0/config/setup/#setup-with-factory)
+First, publish the config file:
+
+```bash
+php artisan vendor:publish --tag=glideinabox  
+```
+
+The following file will appear in `/config/glideinabox.php`:
 
 ````php
 //config/glideinabox.php
@@ -31,6 +36,10 @@ return [
     // watermarks_path_prefix =>'.watermarks'
     'max_image_size'    => 2000 * 2000,
     'presets'           => [
+    /*
+     * @see https://glide.thephpleague.com/1.0/config/defaults-and-presets/
+     * for further documentation about how presets are defined
+     */
         'small'  => [
             'w'   => 200,
             'h'   => 200,
@@ -44,3 +53,5 @@ return [
     ]
 ];
 ````
+
+Feel free to configure these much in the same way you would a [server factory in Glide PHP](https://glide.thephpleague.com/1.0/config/setup/#setup-with-factory)
