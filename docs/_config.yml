@@ -30,7 +30,7 @@ color_scheme: amped
 
 remote_theme: pmarsceill/just-the-docs
 # Build settings
-#theme: "just-the-docs"
+theme: "just-the-docs"
 plugins:
   - jekyll-feed
 
