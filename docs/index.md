@@ -8,7 +8,8 @@ nav_order: 1
 # Laravel Glide In A Box
 Out of the box solution for Glide PHP for Laravel
 {: .fs-6 .fw-300 }
-[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)  [![composer.lock](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/composerlock)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)  [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)
+[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon)
+
 
 [View On Github](https://github.com/ampedweb/laravel-glide-in-a-box){: .btn }
 
