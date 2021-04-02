@@ -28,6 +28,7 @@ twitter_username: ampedweb
 github_username:  ampedweb
 color_scheme: amped
 
+remote_theme: pmarsceill/just-the-docs
 # Build settings
 theme: "just-the-docs"
 plugins:
