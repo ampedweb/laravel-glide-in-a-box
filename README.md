@@ -2,9 +2,7 @@
 Laravel Glide In a Box
 ============  
 
-[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)  
-[![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box)
-![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon)
+[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon)
 
 Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel
 
@@ -20,7 +18,8 @@ Features
 --------  
 
 * Automatically signed urls when using the `glide_url()` helper  function.
-* A fluent interface for all glide image api see here: [https://glide.thephpleague.com/1.0/api/quick-reference/][See here: http://glide.thephpleague.com] 
+* A fluent interface for all glide image api see here: [https://glide.thephpleague.com](https://glide.thephpleague.com/1.0/api/quick-reference/)
+
 
 
 Installation
@@ -83,4 +82,3 @@ Running Tests:
 php vendor/bin/phpunit
 ```
 
-See here: [https://glide.thephpleague.com](https://glide.thephpleague.com/1.0/api/quick-reference/)

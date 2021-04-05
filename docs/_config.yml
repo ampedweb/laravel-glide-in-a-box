@@ -22,14 +22,15 @@ title: Glide In A Box
 email: hosting@ampedwebdesign.co.uk
 description: >- # this means to ignore newlines until "baseurl:"
   Out of the box solution for Glide PHP for Laravel
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/laravel-glide-in-a-box" # the subpath of your site, e.g. /blog
+url: "https://ampedweb.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ampedweb
 github_username:  ampedweb
 color_scheme: amped
 
 # Build settings
-theme: "just-the-docs"
+remote_theme: pmarsceill/just-the-docs
+#theme: "just-the-docs"
 plugins:
   - jekyll-feed
 
