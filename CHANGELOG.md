@@ -15,6 +15,7 @@ Types of changes
 * **Security** in case of vulnerabilities.
 
 ## 0.2.1 - 2021-05-22
+### Fixed
 * fix for config to allow for caching.
 
 ## 0.2.0 - 2021-03-20
