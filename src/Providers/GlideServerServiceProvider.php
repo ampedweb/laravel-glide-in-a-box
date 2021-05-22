@@ -58,7 +58,7 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
 
                 $sourceFileSystem = new LeagueFilesSystem(
-                    config('glideinabox.source', public_path('storage'))
+                    new Local(config('glideinabox.source'), new Local(public_path('storage')))
                 );
 
 
