@@ -14,6 +14,10 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.2.2 - 2021-06-11
+### Fixed
+* fix for unit tests
+
 ## 0.2.1 - 2021-05-22
 ### Fixed
 * fix for config to allow for caching.
