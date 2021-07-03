@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b57bb82f8217fa8f486b69a58b6b3c00",
+    "content-hash": "3089738327b689b4e869a79eff16c3b7",
     "packages": [
+        {
+            "name": "ampedweb/glide-url-helper",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../glide-url-helper",
+                "reference": "fbf8f1c39eeb5cdaf8e2ba8b3861cddebc7ef90c"
+            },
+            "require": {
+                "league/glide": "^1.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AmpedWeb\\GlideUrl\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "AmpedWeb\\GlideUrl\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Powell",
+                    "email": "hosting@ampedwebdesign.co.uk"
+                }
+            ],
+            "description": "Framework Agnostic Fluent url builder for Glide PHP Image Library",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
         {
             "name": "guzzlehttp/psr7",
             "version": "1.8.1",
@@ -7973,12 +8013,14 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ampedweb/glide-url-helper": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3|~8"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
