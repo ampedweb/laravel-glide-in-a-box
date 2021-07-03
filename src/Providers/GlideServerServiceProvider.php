@@ -2,7 +2,7 @@
 
 namespace AmpedWeb\GlideInABox\Providers;
 
-use AmpedWeb\GlideInABox\Util\GlideUrl;
+use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +13,8 @@ use League\Flysystem\Filesystem as LeagueFilesSystem;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
+use League\Glide\Urls\UrlBuilder;
+use League\Glide\Urls\UrlBuilderFactory;
 
 class GlideServerServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -43,24 +45,32 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
     {
 
         /**
-         * Bind the GlideUrl utility class
+         * Bind the FluentUrlBuilder utility class
          */
-        $this->app->bind(
-            GlideUrl::class,
+
+        $this->app->singleton(
+            UrlBuilder::class,
             function ($app) {
-                return new GlideUrl();
+                return UrlBuilderFactory::create(
+                    '/' . config('glideinabox.base_url') . '/',
+                    config('glideinabox.signature_key')
+                );
+            }
+        );
+
+        $this->app->bind(
+            FluentUrlBuilder::class,
+            function ($app) {
+                return new FluentUrlBuilder($app->make(UrlBuilder::class));
             }
         );
 
         $this->app->singleton(
             Server::class,
             function ($app) {
-
-
                 $sourceFileSystem = new LeagueFilesSystem(
                     new Local(config('glideinabox.source', public_path('storage')))
                 );
-
 
                 $serverConfig = [
                     'response'               => $app->makeWith(
@@ -82,10 +92,14 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
                 if ($watermarkFilesystemPath !== null) {
                     if ($watermarkFilesystemPath instanceof AdapterInterface) {
                         $serverConfig['watermarks'] = new LeagueFilesSystem($watermarkFilesystemPath);
-                    } else {
+                    }
+                    else {
                         $serverConfig['watermarks'] = new LeagueFilesSystem(new Local($watermarkFilesystemPath));
                     }
-                    $serverConfig['watermarks_path_prefix'] = config('glideinabox.watermarks_path_prefix', '.watermarks');
+                    $serverConfig['watermarks_path_prefix'] = config(
+                        'glideinabox.watermarks_path_prefix',
+                        '.watermarks'
+                    );
                 }
 
                 return ServerFactory::create($serverConfig);
