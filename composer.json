@@ -2,17 +2,8 @@
     "name": "ampedweb/laravel-glide-in-a-box",
     "description": "Out of the box solution for Glide PHP for Laravel",
     "type": "library",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../glide-url-helper",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "require": {
-        "ampedweb/glide-url-helper": "@dev",
+        "ampedweb/glide-url-helper": "^0.1",
         "league/glide-laravel": "^1.0",
         "php": "^7.3|~8",
         "phploc/phploc": "^7.0"
