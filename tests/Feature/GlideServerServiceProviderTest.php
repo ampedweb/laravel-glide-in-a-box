@@ -6,7 +6,7 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
 use AmpedWeb\GlideInABox\Tests\TestCase;
-use AmpedWeb\GlideInABox\Util\GlideUrl;
+use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Config;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -65,11 +65,11 @@ class GlideServerServiceProviderTest extends TestCase
         rmdir(__DIR__ . '/../../foo');
     }
 
-    public function testMakeGlideUrlBinding()
+    public function testMakeFluentUrlBuilderBinding()
     {
-        $glideUrl = $this->app->make(GlideUrl::class);
+        $glideUrl = $this->app->make(FluentUrlBuilder::class);
 
-        $this->assertInstanceOf(GlideUrl::class, $glideUrl);
+        $this->assertInstanceOf(FluentUrlBuilder::class, $glideUrl);
     }
 
     public function testServiceProvidesServer()

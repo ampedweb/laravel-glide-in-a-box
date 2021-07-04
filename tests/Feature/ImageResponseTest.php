@@ -5,7 +5,7 @@ namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
 use AmpedWeb\GlideInABox\Tests\ImageTestCase;
-use AmpedWeb\GlideInABox\Util\GlideUrl;
+use AmpedWeb\GlideUrl\FluentUrlBuilder;
 
 class ImageResponseTest extends ImageTestCase
 {
@@ -50,7 +50,7 @@ class ImageResponseTest extends ImageTestCase
         //Lets remove our signature from the URL
         $parsedUrl = parse_url($glideUrl);
 
-        $baseUrl = $parsedUrl['scheme'].'://'.$parsedUrl['host'].$parsedUrl['path'];
+        $baseUrl = $parsedUrl['path'];
 
         $queries = [];
         parse_str($parsedUrl['query'],$queries);
@@ -69,7 +69,7 @@ class ImageResponseTest extends ImageTestCase
     {
         $glideUrl = glide_url('cat.png')->build();
 
-        $this->assertInstanceOf(GlideUrl::class, $glideUrl);
+        $this->assertInstanceOf(FluentUrlBuilder::class, $glideUrl);
 
         $response = $this->get($glideUrl->url());
 
