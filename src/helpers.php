@@ -31,8 +31,9 @@ if (!function_exists('glide_url')) {
           return url($url);
         };
 
+       $fluentUrlBuilder = App::make(FluentUrlBuilder::class);
 
-        return (new FluentUrlBuilder(App::make(UrlBuilder::class)))
+        return $fluentUrlBuilder
                 ->setPath($path)
                 ->setPathClosure($parsedPathClosure)
                 ->setUrlClosure($urlClosure);
