@@ -116,6 +116,6 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function provides()
     {
-        return [Server::class];
+        return [Server::class,FluentUrlBuilder::class,UrlBuilder::class];
     }
 }
