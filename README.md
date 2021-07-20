@@ -2,7 +2,9 @@
 Laravel Glide In a Box
 ============  
 
-[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon)
+[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) 
+
+<!-- ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon) -->
 
 Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel providing a fluent interface for the Glide API
 
