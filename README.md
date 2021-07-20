@@ -16,7 +16,7 @@ Requirements
 * PHP >= 7.3 with the following extensions:
   * Exif
   * GD  **or** ImageMagick
-* league/glide-laravel": "^1.0",
+* league/glide-laravel": "^1.6",
 
 Features
 --------  
