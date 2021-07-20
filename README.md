@@ -8,7 +8,9 @@ Laravel Glide In a Box
 
 Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel providing a fluent interface for the Glide API.
 
-Full Docs are here: [https://ampedweb.github.io/laravel-glide-in-a-box/](https://ampedweb.github.io/laravel-glide-in-a-box/)
+Full Docs & Examples are here: [https://ampedweb.github.io/laravel-glide-in-a-box/](https://ampedweb.github.io/laravel-glide-in-a-box/)
+
+If you would like to use JUST the Fluent URL Builder in your project you can find that here: [https://github.com/ampedweb/glide-url-helper](https://github.com/ampedweb/glide-url-helper). Docs are currently a work in progress there...!
 
 Requirements
 ------------  
