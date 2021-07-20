@@ -6,7 +6,9 @@ Laravel Glide In a Box
 
 <!-- ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon) -->
 
-Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel providing a fluent interface for the Glide API
+Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel providing a fluent interface for the Glide API.
+
+Full Docs are here: [https://ampedweb.github.io/laravel-glide-in-a-box/](https://ampedweb.github.io/laravel-glide-in-a-box/)
 
 Requirements
 ------------  
