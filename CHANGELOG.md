@@ -14,6 +14,10 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.4 - 2021-09-09
+### Changed
+* Allow glide_url result to be printed directly
+
 ## 0.2.2 - 2021-06-11
 ### Fixed
 * fix for unit tests
