@@ -53,6 +53,18 @@ An example using a preset as a base and then making a few alterations using the 
 
 ```php
 glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
+
+// You can also cast the FluentUrlBuilder to a string:
+
+$url = (string)glide_url($pathToYourImageFile)->preset('medium')->filter('sepia'); 
+
+// Or print it:
+
+print glide_url($pathToYourImageFile)->preset('medium')->filter('sepia');
+
+// Or use it directly in your blade templates:
+
+{{ glide_url($pathToYourImageFile)->preset('medium')->filter('sepia') }}
 ```
 
 There are also predefined constants if you prefer using those rather than strings, e.g:
