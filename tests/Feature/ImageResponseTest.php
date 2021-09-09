@@ -75,4 +75,15 @@ class ImageResponseTest extends ImageTestCase
 
         $response->assertOk();
     }
+
+    public function testUrlBuilderIsStringable()
+    {
+        $glideUrl = glide_url('cat.png')->build();
+
+        $this->assertInstanceOf(FluentUrlBuilder::class, $glideUrl);
+
+        $response = $this->get((string)$glideUrl);
+
+        $response->assertOk();
+    }
 }
