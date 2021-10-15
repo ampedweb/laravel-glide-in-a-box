@@ -14,10 +14,6 @@ if (!function_exists('glide_url')) {
      */
     function glide_url($path = null)
     {
-        if ($path === null) {
-            return '';
-        }
-
 
         $parsedPathClosure = function($path) {
             $parsedPath = $path;
@@ -34,7 +30,7 @@ if (!function_exists('glide_url')) {
        $fluentUrlBuilder = App::make(FluentUrlBuilder::class);
 
         return $fluentUrlBuilder
-                ->setPath($path)
+                ->setPath($path ?? '')
                 ->setPathClosure($parsedPathClosure)
                 ->setUrlClosure($urlClosure);
     }

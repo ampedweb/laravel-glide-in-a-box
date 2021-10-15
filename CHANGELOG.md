@@ -14,6 +14,10 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.4.1 - 2021-10-15
+### Fixed
+* Prevent runtime error when filename is full.
+
 ## 0.4 - 2021-09-09
 ### Changed
 * Allow glide_url result to be printed directly
