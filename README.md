@@ -2,9 +2,15 @@
 Laravel Glide In a Box
 ============  
 
-[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon)
+[![Latest Stable Version](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/v)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) [![License](https://poser.pugx.org/ampedweb/laravel-glide-in-a-box/license)](//packagist.org/packages/ampedweb/laravel-glide-in-a-box) 
 
-Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel
+<!-- ![Build](https://ci.gorle.co.uk/job/laravel-glide-in-a-box/job/master/badge/icon) -->
+
+Out of the box solution for [Glide PHP](https://glide.thephpleague.com/) for Laravel providing a fluent interface for the Glide API.
+
+Full Docs & Examples are here: [https://ampedweb.github.io/laravel-glide-in-a-box/](https://ampedweb.github.io/laravel-glide-in-a-box/)
+
+If you would like to use JUST the Fluent URL Builder in your project you can find that here: [https://github.com/ampedweb/glide-url-helper](https://github.com/ampedweb/glide-url-helper). Docs are currently a work in progress there...!
 
 Requirements
 ------------  
@@ -12,7 +18,7 @@ Requirements
 * PHP >= 7.3 with the following extensions:
   * Exif
   * GD  **or** ImageMagick
-* league/glide-laravel": "^1.0",
+* league/glide-laravel": "^1.6",
 
 Features
 --------  
@@ -47,6 +53,18 @@ An example using a preset as a base and then making a few alterations using the 
 
 ```php
 glide_url($pathToYourImageFile)->preset('medium')->filter('sepia')->url();
+
+// You can also cast the FluentUrlBuilder to a string:
+
+$url = (string)glide_url($pathToYourImageFile)->preset('medium')->filter('sepia'); 
+
+// Or print it:
+
+print glide_url($pathToYourImageFile)->preset('medium')->filter('sepia');
+
+// Or use it directly in your blade templates:
+
+{{ glide_url($pathToYourImageFile)->preset('medium')->filter('sepia') }}
 ```
 
 There are also predefined constants if you prefer using those rather than strings, e.g:
