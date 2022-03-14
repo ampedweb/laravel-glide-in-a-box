@@ -11,7 +11,7 @@ class ImageResponseTest extends ImageTestCase
 {
     public function testCustomImageResponse()
     {
-        $glideUrl = glide_url('/cat.png')->custom(['w' => 200]);
+        $glideUrl = glide_url('/storage/cat.png')->custom(['w' => 200]);
 
         $imgResponse = $this->get($glideUrl);
 

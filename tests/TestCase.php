@@ -16,30 +16,17 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
+        $config = include __DIR__.'/../src/config/glideinabox.php';
+
+        $config['base_url'] = '';
+        $config['max_image_size'] = 50 * 50;
+
         Artisan::call('storage:link');
         // additional setup
         //Set our glideinabox config
         Config::set(
             "glideinabox",
-            [
-                'signature_key'     => '9e83e05bbf9b5db17ac0deec3b7ce6cba983f6dc50531c7a919f28d5fb3696c3',
-                'cache_path_prefix' => '.cache',
-                'source'            => public_path('storage'),
-                'base_url'          => '',
-                'max_image_size'    => 50 * 50,
-                'presets'           => [
-                    'small'  => [
-                        'w'   => 200,
-                        'h'   => 200,
-                        'fit' => 'crop',
-                    ],
-                    'medium' => [
-                        'w'   => 600,
-                        'h'   => 400,
-                        'fit' => 'crop',
-                    ]
-                ]
-            ]
+            $config
         );
     }
 

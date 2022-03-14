@@ -14,6 +14,11 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.5.0 - 2022-03-14
+### Changed
+* Upgraded minimum dependency ampedweb/glide-url-helper to 0.3
+* Updated feature tests.
+
 ## 0.4.1 - 2021-10-15
 ### Fixed
 * Prevent runtime error when filename is full.

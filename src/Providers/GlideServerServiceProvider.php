@@ -7,9 +7,9 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\AdapterInterface;
 use League\Flysystem\Filesystem as LeagueFilesSystem;
+use League\Flysystem\FilesystemAdapter;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
@@ -69,7 +69,7 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
             Server::class,
             function ($app) {
                 $sourceFileSystem = new LeagueFilesSystem(
-                    new Local(config('glideinabox.source', public_path('storage')))
+                    new LocalFilesystemAdapter(config('glideinabox.source', public_path('storage')))
                 );
 
                 $serverConfig = [
@@ -90,11 +90,11 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
                 $watermarkFilesystemPath = config('glideinabox.watermarks', null);
                 if ($watermarkFilesystemPath !== null) {
-                    if ($watermarkFilesystemPath instanceof AdapterInterface) {
+                    if ($watermarkFilesystemPath instanceof FilesystemAdapter) {
                         $serverConfig['watermarks'] = new LeagueFilesSystem($watermarkFilesystemPath);
                     }
                     else {
-                        $serverConfig['watermarks'] = new LeagueFilesSystem(new Local($watermarkFilesystemPath));
+                        $serverConfig['watermarks'] = new LeagueFilesSystem(new LocalFilesystemAdapter($watermarkFilesystemPath));
                     }
                     $serverConfig['watermarks_path_prefix'] = config(
                         'glideinabox.watermarks_path_prefix',
