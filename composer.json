@@ -5,8 +5,7 @@
     "require": {
         "ampedweb/glide-url-helper": "^0.3",
         "league/glide-laravel": "^1.0",
-        "php": "^7.3|~8",
-        "phploc/phploc": "^7.0"
+        "php": "^7.3|~8"
     },
 
     "license": "MIT",
