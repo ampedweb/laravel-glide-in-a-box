@@ -14,6 +14,14 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.6.0 - 2023-07-31
+### Added
+* Callback to override behaviour on signature validation failure in GlideImageController::image
+* Callback to override behaviour on file not found failure in GlideImageController::image
+
+### Changed
+* GlideImageController::image returns a 404 by default when an image file is not found
+
 ## 0.5.1 - 2023-04-13
 ### Removed
 * Dependency on phploc/phploc

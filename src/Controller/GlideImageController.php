@@ -3,6 +3,7 @@
 namespace AmpedWeb\GlideInABox\Controller;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 use Illuminate\Routing\Controller;
+use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\Server;
 
 class GlideImageController extends Controller
@@ -13,6 +14,10 @@ class GlideImageController extends Controller
     protected $server;
 
     protected $signatureValidation;
+
+    protected $signatureFailedCallback;
+
+    protected $fileNotFoundCallback;
 
     /**
      * ImageController constructor.
@@ -29,9 +34,35 @@ class GlideImageController extends Controller
 
     public function image($path)
     {
-        //If we don't pass validation this will "abort"
-        $this->signatureValidation->validate($path);
+        //If we don't pass validation this will "abort" or call our callback if we have one
+        $this->signatureValidation->validate($path, $this->signatureFailedCallback);
 
-        return $this->server->getImageResponse($path, request()->all());
+        try {
+            return $this->server->getImageResponse($path, request()->all());
+        } catch (FileNotFoundException $exception) {
+            $callback = $this->fileNotFoundCallback;
+
+            if (is_callable($callback)) {
+                return $callback();
+            }
+
+            abort(404);
+        }
+    }
+
+    /**
+     * @param mixed $signatureFailedCallback
+     */
+    public function setSignatureFailedCallback(callable $signatureFailedCallback = null): void
+    {
+        $this->signatureFailedCallback = $signatureFailedCallback;
+    }
+
+    /**
+     * @param mixed $fileNotFoundCallback
+     */
+    public function setFileNotFoundCallback(callable $fileNotFoundCallback = null): void
+    {
+        $this->fileNotFoundCallback = $fileNotFoundCallback;
     }
 }
