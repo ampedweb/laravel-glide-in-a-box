@@ -2,7 +2,9 @@
 
 namespace AmpedWeb\GlideInABox\Controller;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
+use Exception;
 use Illuminate\Routing\Controller;
+use League\Flysystem\UnableToRetrieveMetadata;
 use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\Server;
 
@@ -39,7 +41,7 @@ class GlideImageController extends Controller
 
         try {
             return $this->server->getImageResponse($path, request()->all());
-        } catch (FileNotFoundException $exception) {
+        } catch (FileNotFoundException|UnableToRetrieveMetadata|Exception $exception) {
             $callback = $this->fileNotFoundCallback;
 
             if (is_callable($callback)) {
