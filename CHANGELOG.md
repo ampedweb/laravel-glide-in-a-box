@@ -14,6 +14,11 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 0.6.1 - 2023-08-30
+### Fixed
+* Include `Exception` and `UnabletoRetrieveMetadata` in `GlideImageController::image`
+  when calling fileNotFound callback
+
 ## 0.6.0 - 2023-07-31
 ### Added
 * Callback to override behaviour on signature validation failure in GlideImageController::image
