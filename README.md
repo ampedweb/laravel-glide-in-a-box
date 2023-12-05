@@ -70,7 +70,7 @@ print glide_url($pathToYourImageFile)->preset('medium')->filter('sepia');
 There are also predefined constants if you prefer using those rather than strings, e.g:
 
 ```php
-use AmpedWeb\GlideInABox\Interfaces\Filter;
+use AmpedWeb\GlideUrl\Interfaces\Filter;
 
 glide_url($pathToYourImageFile)->preset('medium')->filter(Filter::SEPIA)->url();
 ```
@@ -79,7 +79,7 @@ You can also build a completely custom image with no preset.
 Below is a 200x100 px cropped webp image at 50% quality:
 
 ```php
-use AmpedWeb\GlideInABox\Interfaces\Fit;
+use AmpedWeb\GlideUrl\Interfaces\Fit;
 
 glide_url($pathToYourImageFile)->size(200,100)->fit(Fit::CROP)->webp(50)->url();
 ```

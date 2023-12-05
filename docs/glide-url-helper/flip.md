@@ -37,7 +37,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->flip(Flip::VERTICAL)->url()
 #### Flip Constants
 
 ```php
-namespace AmpedWeb\GlideInABox\Interfaces\Flip;
+namespace AmpedWeb\GlideUrl\Interfaces\Flip;
 
 Flip::VERTICAL // same as "v"
 Flip::HORIZONTAL // same as "h"

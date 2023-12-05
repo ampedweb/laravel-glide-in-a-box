@@ -52,7 +52,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->cropToPosition(100,100,Crop::TOP_
 
 ```php
 
-    namespace AmpedWeb\GlideInABox\Interfaces\Crop;
+    namespace AmpedWeb\GlideUrl\Interfaces\Crop;
 
     Crop::TOP_LEFT // same as "crop-top-left"
     Crop::TOP // same as "top"

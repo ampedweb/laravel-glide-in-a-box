@@ -162,7 +162,7 @@ glide_url('/path/to/your_amazing_image.jpeg')
 #### Position Constants
 
 ```php
-namespace AmpedWeb\GlideInABox\Interfaces\Position;
+namespace AmpedWeb\GlideUrl\Interfaces\Position;
 
 Position::TOP_LEFT // same as "top-left"
 Position::TOP // same as "top"

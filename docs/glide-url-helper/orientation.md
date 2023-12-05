@@ -38,7 +38,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->orientation(Rotate::R90)->url()
 #### Orientation Constants
 
 ```php
-namespace AmpedWeb\GlideInABox\Interfaces\Orientation;
+namespace AmpedWeb\GlideUrl\Interfaces\Rotate;
 
 Rotate::AUTO // same as "auto"
 Rotate::R0 // same as "0"
