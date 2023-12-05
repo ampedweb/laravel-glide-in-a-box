@@ -62,7 +62,7 @@ glide_url('/path/to/your_amazing_image.jpeg')->filter(Filter::GREYSCALE)->url()
 #### Filter Constants
 
 ```php
-namespace AmpedWeb\GlideInABox\Interfaces\Effects;
+namespace AmpedWeb\GlideUrl\Interfaces\Filter;
 
 Filter::GREYSCALE // same as "greyscale"
 Filter::SEPIA // same as "sepia"

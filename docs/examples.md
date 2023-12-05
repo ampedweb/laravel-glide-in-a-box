@@ -64,9 +64,9 @@ $darkerImage = (string)glide_url('/path/to/your/image.jpg')->preset('list')->bri
 #### Chain as many manipulations as you want
 
 ```php
-use AmpedWeb\GlideInABox\Interfaces\Border;
-use AmpedWeb\GlideInABox\Interfaces\Crop;
-use AmpedWeb\GlideInABox\Interfaces\Filter;
+use AmpedWeb\GlideUrl\Interfaces\Border;
+use AmpedWeb\GlideUrl\Interfaces\Crop;
+use AmpedWeb\GlideUrl\Interfaces\Filter;
 
 $image = (string)glide_url('/path/to/your/image.jpg')->preset('list')
                                                      ->cropToPosition(400, 400, Crop::BOTTOM_LEFT)
@@ -88,9 +88,9 @@ $image = glide_url('/path/to/your/image.jpg')->size(300, 300)->fit('max')->jpeg(
 
 ### Using several manipulations
 ```php
-use AmpedWeb\GlideInABox\Interfaces\Border;
-use AmpedWeb\GlideInABox\Interfaces\Crop;
-use AmpedWeb\GlideInABox\Interfaces\Filter;
+use AmpedWeb\GlideUrl\Interfaces\Border;
+use AmpedWeb\GlideUrl\Interfaces\Crop;
+use AmpedWeb\GlideUrl\Interfaces\Filter;
 
 $image = (string)glide_url('/path/to/your/image.jpg')->cropToPosition(400, 400, Crop::BOTTOM_LEFT)
                                                      ->sharpen(20)
