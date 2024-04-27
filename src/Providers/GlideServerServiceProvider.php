@@ -4,13 +4,12 @@ namespace AmpedWeb\GlideInABox\Providers;
 
 use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use League\Glide\Responses\SymfonyResponseFactory;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem as LeagueFilesSystem;
 use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
-use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
 use League\Glide\Urls\UrlBuilder;
@@ -73,27 +72,26 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
                 );
 
                 $serverConfig = [
-                    'response'               => $app->makeWith(
-                        LaravelResponseFactory::class,
+                    'response' => $app->makeWith(
+                        SymfonyResponseFactory::class,
                         ['request' => app('request')]
                     ),
-                    'source'                 => $sourceFileSystem,
-                    'cache'                  => $app->make(Filesystem::class)->getDriver(),
-                    'cache_path_prefix'      => config('glideinabox.cache_path_prefix', '.cache'),
-                    'base_url'               => config('glideinabox.base_url', 'img'),
-                    'defaults'               => config('glideinabox.defaults', []),
-                    'presets'                => config('glideinabox.presets', []),
-                    'driver'                 => config('glideinabox.driver', 'gd'),
+                    'source' => $sourceFileSystem,
+                    'cache' => $app->make(Filesystem::class)->getDriver(),
+                    'cache_path_prefix' => config('glideinabox.cache_path_prefix', '.cache'),
+                    'base_url' => config('glideinabox.base_url', 'img'),
+                    'defaults' => config('glideinabox.defaults', []),
+                    'presets' => config('glideinabox.presets', []),
+                    'driver' => config('glideinabox.driver', 'gd'),
                     'group_cache_in_folders' => config('glideinabox.group_cache_in_folders', true),
-                    'max_image_size'         => config('glideinabox.max_image_size', null)
+                    'max_image_size' => config('glideinabox.max_image_size', null),
                 ];
 
                 $watermarkFilesystemPath = config('glideinabox.watermarks', null);
                 if ($watermarkFilesystemPath !== null) {
                     if ($watermarkFilesystemPath instanceof FilesystemAdapter) {
                         $serverConfig['watermarks'] = new LeagueFilesSystem($watermarkFilesystemPath);
-                    }
-                    else {
+                    } else {
                         $serverConfig['watermarks'] = new LeagueFilesSystem(new LocalFilesystemAdapter($watermarkFilesystemPath));
                     }
                     $serverConfig['watermarks_path_prefix'] = config(
@@ -116,6 +114,6 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function provides()
     {
-        return [Server::class,FluentUrlBuilder::class,UrlBuilder::class];
+        return [Server::class, FluentUrlBuilder::class, UrlBuilder::class];
     }
 }

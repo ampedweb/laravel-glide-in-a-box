@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "ampedweb/glide-url-helper": "^0.3",
-        "league/glide-laravel": "^1.0",
+        "league/glide-symfony": "^2.0",
         "php": "^7.3|~8"
     },
 
