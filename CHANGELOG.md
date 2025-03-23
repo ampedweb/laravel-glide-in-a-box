@@ -14,6 +14,12 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## 1.0.0 - 2025-03-23
+
+### Changed
+* Remove reliance on league/glide-symfony package, adopt own custom response factory
+* Update ampedweb/glide-url-helper to v2.0
+
 ## 0.7.0 - 2024-04-27
 ### Changed
 * Use league/glide-symfony package instead of league/glide-laravel

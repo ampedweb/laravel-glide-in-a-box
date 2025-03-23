@@ -4,7 +4,7 @@ namespace AmpedWeb\GlideInABox\Providers;
 
 use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Illuminate\Contracts\Filesystem\Filesystem;
-use League\Glide\Responses\SymfonyResponseFactory;
+use AmpedWeb\GlideInABox\Response\ResponseFactory;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem as LeagueFilesSystem;
@@ -73,7 +73,7 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
                 $serverConfig = [
                     'response' => $app->makeWith(
-                        SymfonyResponseFactory::class,
+                        ResponseFactory::class,
                         ['request' => app('request')]
                     ),
                     'source' => $sourceFileSystem,
