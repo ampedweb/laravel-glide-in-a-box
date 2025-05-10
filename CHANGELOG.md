@@ -21,6 +21,9 @@ Types of changes
 * SignatureServiceProvider - functionality now in central package service provider.
 * SignatureServiceProvider - functionality now in central package service provider.
 
+### Added
+* Ability to override image controller FQN via configuration
+
 ## 1.0.0 - 2025-03-23
 
 ### Changed
