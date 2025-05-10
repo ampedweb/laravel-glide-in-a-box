@@ -17,7 +17,7 @@ use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 
-class GlideServerServiceProvider extends ServiceProvider implements DeferrableProvider
+class PackageServiceProvider extends ServiceProvider implements DeferrableProvider
 {
 
     /**
@@ -25,7 +25,7 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 

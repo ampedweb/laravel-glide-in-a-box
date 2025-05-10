@@ -4,15 +4,17 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
-use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
+use League\Glide\Urls\UrlBuilder;
+use League\Glide\Signatures\Signature;
+use AmpedWeb\GlideInABox\Providers\PackageServiceProvider;
 use AmpedWeb\GlideInABox\Tests\TestCase;
 use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Config;
 use League\Flysystem\Filesystem;
-use League\Flysystem\Local\LocalFilesystemAdapter;
 use League\Glide\Api\Api;
 use League\Glide\Manipulators\Watermark;
 use League\Glide\Server;
+use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 
 class GlideServerServiceProviderTest extends TestCase
 {
@@ -55,12 +57,6 @@ class GlideServerServiceProviderTest extends TestCase
         $watermarksFlysystem = $watermarkManipulator->getWatermarks();
         $this->assertInstanceOf(Filesystem::class, $watermarksFlysystem);
 
-        /** @var LocalFilesystemAdapter $adapter */
-//        $adapter = $watermarksFlysystem->getAdapter();
-//        $this->assertInstanceOf(LocalFilesystemAdapter::class, $adapter);
-//
-//        $this->assertEquals($watermarkPath . '/', $adapter->getPathPrefix());
-
         /* Clean up created directory.  Yes, really. */
         rmdir(__DIR__ . '/../../foo');
     }
@@ -74,7 +70,16 @@ class GlideServerServiceProviderTest extends TestCase
 
     public function testServiceProvidesServer()
     {
-        $service = new GlideServerServiceProvider($this->app);
-        $this->assertContains(Server::class, $service->provides());
+        $service = new PackageServiceProvider($this->app);
+
+        $expected = [
+            Server::class,
+            FluentUrlBuilder::class,
+            UrlBuilder::class,
+            Signature::class,
+            GlideSignatureValidationService::class,
+        ];
+
+        $this->assertEqualsCanonicalizing($expected, $service->provides());
     }
 }

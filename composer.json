@@ -22,13 +22,13 @@
     "authors": [
         {
             "name": "Chris Powell",
-            "email": "hosting@ampedwebdesign.co.uk"
+            "email": "chris@ampedweb.dev"
         }
     ],
     "extra": {
         "laravel": {
             "providers": [
-                "AmpedWeb\\GlideInABox\\Providers\\GlideServerServiceProvider"
+              "AmpedWeb\\GlideInABox\\Providers\\PackageServiceProvider"
             ]
         }
     },
