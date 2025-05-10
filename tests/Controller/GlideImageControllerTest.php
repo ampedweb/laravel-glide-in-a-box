@@ -19,7 +19,6 @@ class GlideImageControllerTest extends TestCase
         $controller = $this->app->make(GlideImageController::class);
 
         $this->expectException(HttpException::class);
-        $this->expectExceptionMessage("It's not for you!");
 
         // Act
         $controller->image('foo');

@@ -4,59 +4,43 @@
 namespace AmpedWeb\GlideInABox\Services;
 
 
+use Illuminate\Http\Request;
+use League\Glide\Signatures\SignatureInterface;
 use AmpedWeb\GlideInABox\Interfaces\SignatureValidationServiceInterface;
 use Closure;
-use League\Glide\Signatures\Signature;
 use League\Glide\Signatures\SignatureException;
 
 class GlideSignatureValidationService implements SignatureValidationServiceInterface
 {
 
+    protected SignatureInterface $signature;
 
-    protected $baseImgDir;
+    protected Request $request;
 
-    /**
-     * @var Signature
-     */
-    protected $signature;
-
-    /**
-     * GlideImageRequestValidationService constructor.
-     *
-     * @param Signature   $signature
-     * @param string|null $baseImgDir
-     */
-    public function __construct(Signature $signature, string $baseImgDir = null)
+    public function __construct(SignatureInterface $signature)
     {
         $this->signature = $signature;
-        $this->baseImgDir = $baseImgDir ?? config('glideinabox.base_url');
     }
 
 
-
-    /**
-     * @param               $path
-     * @param Closure|null $callback
-     *
-     * @return mixed
-     */
-    public function validate($path, Closure $callback = null)
+    public function validate(string $path, array $params = [], ?Closure $callback = null): Closure | bool
     {
 
         try {
             // Validate HTTP signature
-            $this->signature->validateRequest('/' . $this->baseImgDir . '/'.$path, request()->all());
+            $this->signature->validateRequest($path, $params);
 
         } catch (SignatureException $e) {
 
-            if($callback instanceof Closure) {
-                return $callback();
+            if ($callback instanceof Closure) {
+                return $callback($e);
             }
 
-            abort(403, "It's not for you!");
+            abort(403);
         }
 
-        return null;
+        return true;
+
     }
 
 }

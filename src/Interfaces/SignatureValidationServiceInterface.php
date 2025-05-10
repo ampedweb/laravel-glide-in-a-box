@@ -7,5 +7,5 @@ use Closure;
 
 interface SignatureValidationServiceInterface
 {
-    public function validate($path, Closure $callback = null);
+    public function validate(string $path, array $params, ?Closure $callback = null): Closure | bool;
 }

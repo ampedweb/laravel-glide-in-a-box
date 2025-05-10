@@ -24,6 +24,9 @@ Types of changes
 ### Added
 * Ability to override image controller FQN via configuration
 
+### Changed
+* BREAKING - Url signing is now disabled by default.
+
 ## 1.0.0 - 2025-03-23
 
 ### Changed

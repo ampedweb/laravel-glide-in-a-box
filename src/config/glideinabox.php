@@ -2,7 +2,7 @@
 
 return [
     //'imageController' => YourImageController::class,
-    'signature_key'     => '9e83e05bbf9b5db17ac0deec3b7ce6cba983f6dc50531c7a919f28d5fb3696c3',
+    'signature_key'     => null,
     'cache_path_prefix' => '.cache',
     'base_url'          => 'img',
     'source'            => public_path('storage'),

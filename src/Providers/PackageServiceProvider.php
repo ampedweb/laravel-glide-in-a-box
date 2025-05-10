@@ -15,6 +15,7 @@ use League\Glide\Server;
 use League\Glide\ServerFactory;
 use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
+use AmpedWeb\GlideInABox\Signatures\AlwaysValidSignature;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 
 class PackageServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -47,12 +48,15 @@ class PackageServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register(): void
     {
 
-        $this->app->singleton(Signature::class, function ($app) {
-            return new Signature(config('glideinabox.signature_key'));
+        $this->app->singleton(Signature::class, function () {
+            return new Signature(config('glideinabox.signature_key') ?? '');
         });
 
-        $this->app->singleton(GlideSignatureValidationService::class, function ($app) {
-            return new GlideSignatureValidationService($this->app->make(Signature::class));
+        $this->app->singleton(GlideSignatureValidationService::class, function () {
+
+            $signature = empty(config('glideinabox.signature_key')) ? new AlwaysValidSignature : $this->app->make(Signature::class);
+
+            return new GlideSignatureValidationService($signature);
         });
 
 

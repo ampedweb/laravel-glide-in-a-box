@@ -16,7 +16,7 @@ use League\Glide\Manipulators\Watermark;
 use League\Glide\Server;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 
-class GlideServerServiceProviderTest extends TestCase
+class PackageServiceProviderTest extends TestCase
 {
     public function testWatermarksConfigurationIsParsed()
     {

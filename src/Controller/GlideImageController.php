@@ -1,6 +1,8 @@
 <?php
 
 namespace AmpedWeb\GlideInABox\Controller;
+
+use Closure;
 use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 use Exception;
 use Illuminate\Routing\Controller;
@@ -10,23 +12,15 @@ use League\Glide\Server;
 
 class GlideImageController extends Controller
 {
-    /**
-     * @var Server
-     */
-    protected $server;
 
-    protected $signatureValidation;
+    protected Server $server;
 
-    protected $signatureFailedCallback;
+    protected GlideSignatureValidationService $signatureValidation;
 
-    protected $fileNotFoundCallback;
+    protected ?Closure $signatureFailedCallback = null;
 
-    /**
-     * ImageController constructor.
-     *
-     * @param Server                          $server
-     * @param GlideSignatureValidationService $signatureValidation
-     */
+    protected ?Closure $fileNotFoundCallback = null;
+
     public function __construct(Server $server, GlideSignatureValidationService $signatureValidation)
     {
         $this->server = $server;
@@ -34,36 +28,37 @@ class GlideImageController extends Controller
     }
 
 
-    public function image($path)
+    public function image(string $path)
     {
+
+        if ($pathPrefix = config('glideinabox.base_url')) {
+            $path = '/' . $pathPrefix . '/' . $path;
+        }
+
         //If we don't pass validation this will "abort" or call our callback if we have one
-        $this->signatureValidation->validate($path, $this->signatureFailedCallback);
+        $this->signatureValidation->validate($path, request()->query(), $this->signatureFailedCallback);
 
         try {
-            return $this->server->getImageResponse($path, request()->all());
-        } catch (FileNotFoundException|UnableToRetrieveMetadata|Exception $exception) {
+            return $this->server->getImageResponse($path, request()->query());
+        } catch (FileNotFoundException | UnableToRetrieveMetadata | Exception $e) {
             $callback = $this->fileNotFoundCallback;
 
             if (is_callable($callback)) {
-                return $callback();
+                return $callback($e);
             }
 
             abort(404);
         }
     }
 
-    /**
-     * @param mixed $signatureFailedCallback
-     */
-    public function setSignatureFailedCallback(callable $signatureFailedCallback = null): void
+
+    public function setSignatureFailedCallback(?Closure $signatureFailedCallback = null): void
     {
         $this->signatureFailedCallback = $signatureFailedCallback;
     }
 
-    /**
-     * @param mixed $fileNotFoundCallback
-     */
-    public function setFileNotFoundCallback(callable $fileNotFoundCallback = null): void
+
+    public function setFileNotFoundCallback(?Closure $fileNotFoundCallback = null): void
     {
         $this->fileNotFoundCallback = $fileNotFoundCallback;
     }

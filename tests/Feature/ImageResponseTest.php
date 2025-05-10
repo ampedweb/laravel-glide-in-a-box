@@ -4,6 +4,7 @@
 namespace AmpedWeb\GlideInABox\Tests\Feature;
 
 
+use Illuminate\Support\Facades\Config;
 use AmpedWeb\GlideInABox\Tests\ImageTestCase;
 use AmpedWeb\GlideUrl\FluentUrlBuilder;
 
@@ -45,6 +46,8 @@ class ImageResponseTest extends ImageTestCase
 
     public function testNoSignatureResponse()
     {
+        Config::set("glideinabox.signature_key", '12345');
+
         $glideUrl = glide_url('cat.png')->preset(['large'])->url();
 
         //Lets remove our signature from the URL
