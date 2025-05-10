@@ -2,6 +2,7 @@
 
 namespace AmpedWeb\GlideInABox\Providers;
 
+use League\Glide\Signatures\Signature;
 use AmpedWeb\GlideUrl\FluentUrlBuilder;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use AmpedWeb\GlideInABox\Response\ResponseFactory;
@@ -42,22 +43,20 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
 
-        /**
-         * Bind the FluentUrlBuilder utility class
-         */
+        $this->app->singleton(Signature::class, function ($app) {
+            return new Signature(config('glideinabox.signature_key'));
+        });
 
-        $this->app->singleton(
-            UrlBuilder::class,
-            function ($app) {
-                return UrlBuilderFactory::create(
-                    '/' . config('glideinabox.base_url') . '/',
-                    config('glideinabox.signature_key')
-                );
-            }
-        );
+
+        $this->app->singleton(UrlBuilder::class, function () {
+            return UrlBuilderFactory::create(
+                '/' . config('glideinabox.base_url') . '/',
+                config('glideinabox.signature_key')
+            );
+        });
 
         $this->app->bind(
             FluentUrlBuilder::class,
@@ -116,6 +115,6 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function provides()
     {
-        return [Server::class, FluentUrlBuilder::class, UrlBuilder::class];
+        return [Server::class, FluentUrlBuilder::class, UrlBuilder::class, Signature::class];
     }
 }
