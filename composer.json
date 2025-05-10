@@ -28,8 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AmpedWeb\\GlideInABox\\Providers\\GlideServerServiceProvider",
-                "AmpedWeb\\GlideInABox\\Providers\\GlideSignatureValidationServiceProvider"
+                "AmpedWeb\\GlideInABox\\Providers\\GlideServerServiceProvider"
             ]
         }
     },

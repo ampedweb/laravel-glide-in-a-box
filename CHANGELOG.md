@@ -19,6 +19,7 @@ Types of changes
 ### Removed
 * GlideServerServiceProvider - functionality now in central package service provider.
 * SignatureServiceProvider - functionality now in central package service provider.
+* SignatureServiceProvider - functionality now in central package service provider.
 
 ## 1.0.0 - 2025-03-23
 

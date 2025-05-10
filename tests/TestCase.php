@@ -4,7 +4,6 @@ namespace AmpedWeb\GlideInABox\Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
-use AmpedWeb\GlideInABox\Providers\GlideSignatureValidationServiceProvider;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 
@@ -26,9 +25,6 @@ class TestCase extends OrchestraTestCase
 
     protected function getPackageProviders($app): array
     {
-        return [
-            GlideServerServiceProvider::class,
-            GlideSignatureValidationServiceProvider::class,
-        ];
+        return [GlideServerServiceProvider::class];
     }
 }

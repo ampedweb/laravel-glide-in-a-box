@@ -15,6 +15,7 @@ use League\Glide\Server;
 use League\Glide\ServerFactory;
 use League\Glide\Urls\UrlBuilder;
 use League\Glide\Urls\UrlBuilderFactory;
+use AmpedWeb\GlideInABox\Services\GlideSignatureValidationService;
 
 class GlideServerServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -48,6 +49,10 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
 
         $this->app->singleton(Signature::class, function ($app) {
             return new Signature(config('glideinabox.signature_key'));
+        });
+
+        $this->app->singleton(GlideSignatureValidationService::class, function ($app) {
+            return new GlideSignatureValidationService($this->app->make(Signature::class));
         });
 
 
@@ -113,8 +118,14 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return [Server::class, FluentUrlBuilder::class, UrlBuilder::class, Signature::class];
+        return [
+            Server::class,
+            FluentUrlBuilder::class,
+            UrlBuilder::class,
+            Signature::class,
+            GlideSignatureValidationService::class,
+        ];
     }
 }
