@@ -25,6 +25,8 @@ class GlideServerServiceProvider extends ServiceProvider implements DeferrablePr
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 [

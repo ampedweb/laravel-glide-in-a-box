@@ -2,15 +2,14 @@
 
 namespace AmpedWeb\GlideInABox\Tests;
 
-use AmpedWeb\GlideInABox\Providers\GlideInABoxRoutesProvider;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use AmpedWeb\GlideInABox\Providers\GlideServerServiceProvider;
 use AmpedWeb\GlideInABox\Providers\GlideSignatureValidationServiceProvider;
 use AmpedWeb\GlideInABox\Providers\SignatureServiceProvider;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
-use League\Flysystem\Adapter\Local;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+class TestCase extends OrchestraTestCase
 {
     public function setUp(): void
     {
@@ -22,21 +21,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $config['max_image_size'] = 50 * 50;
 
         Artisan::call('storage:link');
-        // additional setup
-        //Set our glideinabox config
-        Config::set(
-            "glideinabox",
-            $config
-        );
+
+        Config::set("glideinabox", $config);
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             GlideServerServiceProvider::class,
             GlideSignatureValidationServiceProvider::class,
             SignatureServiceProvider::class,
-            GlideInABoxRoutesProvider::class
         ];
     }
 }
